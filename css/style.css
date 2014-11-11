@@ -1,0 +1,97 @@
+* {
+    font-family: monospace;
+    white-space: normal;
+}
+html, body {
+    height: 100%;
+}
+body * {
+    display: block;
+}
+
+body {
+    display: block;
+}
+
+.content-body {
+    width: 100%;
+}
+
+.content-body {}
+
+div#topPanel {
+    /* height: auto; */
+    /* border-bottom: 1px solid #EAEAEA; */
+    /* width: 100%; */
+    /* padding: 10px; */
+    /* overflow-x: auto; */
+}
+
+div#hScroller {
+	position: relative;
+}
+
+#TemplateHolder {
+    width: 100%;
+    padding: 30px;
+    border: 1px solid #EAEAEA;
+    min-height: 550px;
+}
+
+#propertyToolbar {
+    position: absolute;
+    width: 100%;
+    top: 0px;
+    height: 80px;
+}
+
+
+#sidebar-wrapper {
+	width: 350px!important;
+	overflow-x: hidden;
+}
+
+#wrapper {
+	padding-right: 350px!important;
+	display: block;  min-height: 100%;  -webkit-box-sizing: border-box;
+}
+
+.col-md-8 {
+	width: 100%!important;
+}
+
+.col-md-1, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-md-10, .col-md-11, .col-md-12{
+	float: left;
+}
+
+button{
+	margin: 10px;
+}
+
+
+#page-content-wrapper
+{
+	padding-top: 0px;
+}
+
+.sidebar-nav > .sidebar-brand{
+	color:  #fff;
+}
+
+.sidebar-nav li a
+{
+	white-space: normal;
+	display: block;
+	color: #fff;
+}
+
+.sidebar-nav li a:hover
+{
+	color:  #fff;
+}
+
+ul.sidebar-nav
+{
+	padding-bottom: 10px;
+	overflow-x: hidden;
+}

@@ -1,0 +1,39 @@
+.sukrut_header
+{
+	width:500px;
+	background: #f7f7f7;
+	min-height: 50px;
+	display: inline-block;
+	vertical-align: middle;
+	outline: 1px solid #bbb;
+}
+
+.sukrut_body
+{
+	width:500px;
+	background: #f7f7f7;
+	min-height: 100px;
+	display: inline-block;
+	vertical-align: middle;
+	outline: 1px solid #bbb;
+}
+
+.sukrut_footer
+{
+	width:500px;
+	background: #f7f7f7;
+	min-height: 50px;
+	display: inline-block;
+	vertical-align: middle;
+	outline: 1px solid #bbb;
+}
+
+.sukrut_template_holder
+{
+	 text-align: center;
+	 font-family: 'xsphone,phone,xlphone,tablet,xltablet,desktop';
+	 font-size: 14px;
+	 color: #959595;
+	 font-weight: bold;
+	 vertical-align: middle;
+}

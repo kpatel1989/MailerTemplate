@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Mail Template Editor </title>
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+		
+		
+		<link rel="stylesheet" type="text/css" href="/MailerTemplate/bootstrap/css/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" href="/MailerTemplate/css/hover-min.css">
+		<link rel="stylesheet" type="text/css" href="/MailerTemplate/bootstrap/css/bootstrap-theme.min.css">
+		<link rel="stylesheet" type="text/css" href="/MailerTemplate/css/simple-sidebar.css">
+		<link href="/MailerTemplate/css/style.css" rel="stylesheet" type="text/css" />
+		<link rel="stylesheet" type="text/css" href="/MailerTemplate/css/template-holder.css">
+		
+		<script src="/MailerTemplate/js/lib/underscore.js"></script>
+		<script src="/MailerTemplate/js/lib/jquery-1.11.0.js"></script>
+		<script src="/MailerTemplate/js/lib/backbone.js"></script>
+		<script src="/MailerTemplate/js/lib/jquery-ui-1.10.4.js"></script>
+		<script src="/MailerTemplate/js/lib/handlebars-v1.3.0.js"></script>
+		<script src="/MailerTemplate/bootstrap/js/bootstrap.min.js"></script>
+		<script src="/MailerTemplate/js/MailerTemplate.js"></script>
+		<script src="/MailerTemplate/js/View/MainView.js"></script>		
+		<script src="/MailerTemplate/js/View/TemplateItems.js"></script>
+		<script src="/MailerTemplate/js/View/TemplateHolder.js"></script>
+		<script src="/MailerTemplate/js/DragNDrop.js"></script>
+		<script src="/MailerTemplate/js/DragNDrop.js"></script>
+		<script type="text/template" id="title">
+        <li id="titleTemplateItem" class="draggable">
+            <a href="javascript:void(0)" class ="grow">
+				<img src="../MailerTemplate/images/img_Text.png" class="img-rounded" alt = ""/>
+			</a>
+		</li>
+		</script>
+		
+		<script type="text/template" id="images">
+        <li id="imageTemplateItem" class="draggable">
+            <a href="javascript:void(0)" class ="grow">
+					<img src="../MailerTemplate/images/img_Image.png" class="img-rounded" alt = ""/>
+			</a>
+		</li>
+		</script>
+		<script type="text/template" id="TextPlusImage">
+        <li id="TextPlusImageTemplateItem" class="draggable">
+            <a href="javascript:void(0)" class ="grow" >
+					<img src="../MailerTemplate/images/img_TextPlusImage.png" class="img-rounded" alt = ""/>
+			</a>
+		</li>
+		</script><script type="text/template" id="ImageCard">
+        <li id="ImageCardTemplateItem" class="draggable">
+            <a href="javascript:void(0)" class ="grow">
+					<img src="../MailerTemplate/images/img_ImageCard.png" class="img-rounded" alt = ""/>
+			</a>
+		</li>
+		</script><script type="text/template" id="Divider">
+        <li id="DividerTemplateItem" class="draggable">
+            <a href="javascript:void(0)" class ="grow">
+					<img src="../MailerTemplate/images/img_Divider.png" class="img-rounded" alt = ""/>
+			</a>
+		</li>
+		</script><script type="text/template" id="Gallery">
+        <li id="GalleryTemplateItem" class="draggable">
+            <a href="javascript:void(0)" class ="grow">
+					<img src="../MailerTemplate/images/img_Gallery.png" class="img-rounded" alt = ""/>
+			</a>
+		</li>
+		</script><script type="text/template" id="Button">
+        <li id="ButtonTemplateItem" class="draggable">
+            <a href="javascript:void(0)" class ="grow">
+					<img src="../MailerTemplate/images/img_Button.png" class="img-rounded" alt = ""/>
+			</a>
+		</li>
+		</script><script type="text/template" id="Video">
+        <li id="VideoTemplateItem" class="draggable">
+            <a href="javascript:void(0)" class ="grow">
+					<img src="../MailerTemplate/images/img_Video.png" class="img-rounded" alt = ""/>
+			</a>
+		</li>
+		</script><script type="text/template" id="SocialLinks">
+        <li id="SocialLinksTemplateItem" class="draggable">
+            <a href="javascript:void(0)" class ="grow">
+					<img src="../MailerTemplate/images/img_SocialLink.png" class="img-rounded" alt = ""/>
+			</a>
+		</li>
+		</script>
+	</head>
+	<body>
+		<div id="wrapper">
+
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav" id="templateItems">
+                <li class="sidebar-brand">
+                    <div style="text-align: center;"><h3>Template Items</h3></div>
+                </li>
+                <!--<li>
+					<button type="button" class="btn btn-default btn-lg col-sm-10 draggable" >
+							<span class="glyphicon glyphicon-star"></span> 2 Star
+							<a href="#" class="btn btn-lg btn-info"><span class="glyphicon glyphicon-picture"></span> Default text here</a>
+						</button>
+                </li>
+                <li>
+					
+						<button type="button" class="btn btn-default btn-lg col-sm-10 draggable" >
+							<span class="glyphicon glyphicon-star"></span> 1 Star
+							<a href="#" class="btn btn-lg btn-info"><span class="glyphicon glyphicon-picture"></span> Default text here</a>
+						</button>
+					
+                </li>
+				<li>
+					<button type="button" class="btn btn-default btn-lg col-sm-10 draggable" >
+							<span class="glyphicon glyphicon-star"></span> 2 Star
+							<a href="#" class="btn btn-lg btn-info"><span class="glyphicon glyphicon-picture"></span> Default text here</a>
+						</button>
+                </li>-->
+                
+            </ul>
+        </div>
+        <!-- /#sidebar-wrapper -->
+
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h1><center>Mail Editor</center></h1>
+                        <div class="">
+							<div>
+							
+								
+						
+								<div id="templateHolder" class="sukrut_template_holder">
+
+									<div id="template_holder_header" class="sukrut_header" >
+										<div id="tmp">Drop Header Content Here</div>
+									</div>
+									<br/><br/>
+									<div id="template_holder_body" class="sukrut_body">
+										<div id="tmp">Drop Body Content Here</div>
+									</div>
+									<br/><br/>
+									<div id="template_holder_footer" class="sukrut_footer">
+										<div id="tmp">Drop Footer Content Here</div>
+									</div>
+
+
+									<div id="propertyToolbar">
+										<!-- to be done by manan -->								
+									</div>
+
+								</div>
+								
+								
+							</div>
+						</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /#page-content-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+		<!--
+		<div class="content-body container-fluid">
+			<div class="row-fluid">
+				<div id="topPanel" class="span2">
+					awdawd awd aw
+					<!--<div id="templateItemHolder">
+						  <div class="span4"> 
+							<button type="button" class="btn btn-default btn-lg col-md-1" >
+								<span class="glyphicon glyphicon-star"></span> 1 Star
+								<a href="#" class="btn btn-lg btn-info"><span class="glyphicon glyphicon-picture"></span> Default text here</a>
+							</button>
+						 </div>
+						<div class="span6">
+							<button type="button" class="btn btn-default btn-lg col-md-2" >
+								<span class="glyphicon glyphicon-star"></span> 2 Star
+								<a href="#" class="btn btn-lg btn-info"><span class="glyphicon glyphicon-picture"></span> Default text here</a>
+							</button>
+						</div>
+						<div class="span3">
+							<button type="button" class="btn btn-default btn-lg col-md-2" >
+								<span class="glyphicon glyphicon-star"></span> 3 Star
+							</button>
+						</div>
+					</div>
+
+					<div id="propertiesPanel">
+
+					</div>
+
+				</div>
+				<div class="span10" >
+					sdf6 htht t7t7
+
+					<div id="bottomPanel">
+						<div id="hScroller">
+							Text
+							<div id="templateHolder">
+
+							</div>
+							<div id="propertyToolbar">
+
+							</div>
+							Text
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+-->
+	</body>
+
+</html>

@@ -29,3 +29,5 @@ We can drag them and drop them on the Template-Holder
 Properties panel
 And the same will be used for displaying the Properties-Panel with a save button, on click of that button changes will be applied to the template and properties panel will be closed.  
 
+
+MileStone-1
