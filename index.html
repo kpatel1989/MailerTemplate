@@ -22,6 +22,7 @@
 		<script src="js/View/MainView.js"></script>		
 		<script src="js/View/TemplateItems.js"></script>
 		<script src="js/View/TemplateHolder.js"></script>
+		<script src="js/View/PropertyToolbar.js"></script>
 		<script src="js/DragNDrop.js"></script>
 		<script src="js/DragNDrop.js"></script>
 		<script type="text/template" id="title">
@@ -82,6 +83,63 @@
 			</a>
 		</li>
 		</script>
+		
+		<style>
+		 *{
+			 -webkit-user-select : none;
+		 }
+		  .column {
+			width: 170px;
+			float: left;
+			padding-bottom: 100px;
+		  }
+		  .portlet {
+			  background-color: green;
+			margin: 0 1em 1em 0;
+			padding: 0.3em;
+		  }
+		  .portlet-header {
+			padding: 0.2em 0.3em;
+			margin-bottom: 0.5em;
+			position: relative;
+		  }
+		  .portlet-toggle {
+			position: absolute;
+			top: 50%;
+			right: 0;
+			margin-top: -8px;
+		  }
+		  .portlet-content {
+			padding: 0.4em;
+		  }
+		  .portlet-placeholder {
+			border: 1px dotted black;
+			margin: 0 1em 1em 0;
+			height: 50px;
+		  }
+		  </style>
+		  <script>
+		  $(function() {
+			$( ".column" ).sortable({
+			  connectWith: ".column",
+			  handle: ".portlet-header",
+			  cancel: ".portlet-toggle",
+			  placeholder: "portlet-placeholder ui-corner-all"
+			});
+
+			$( ".portlet" )
+			  .addClass( "ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" )
+			  .find( ".portlet-header" )
+				.addClass( "ui-widget-header ui-corner-all" )
+				.prepend( "<span class='ui-icon ui-icon-minusthick portlet-toggle'></span>");
+
+			$( ".portlet,.portlet-content" ).click(function() {
+			  var icon = $( this );
+			  icon.toggleClass( "ui-icon-minusthick ui-icon-plusthick" );
+			  icon.closest( ".portlet" ).find( ".portlet-content" ).toggle();
+			});
+		  });
+	  </script>
 	</head>
 	<body>
 		<div id="wrapper">
@@ -92,26 +150,6 @@
                 <li class="sidebar-brand">
                     <div style="text-align: center;"><h3>Template Items</h3></div>
                 </li>
-                <!--<li>
-					<button type="button" class="btn btn-default btn-lg col-sm-10 draggable" >
-							<span class="glyphicon glyphicon-star"></span> 2 Star
-							<a href="#" class="btn btn-lg btn-info"><span class="glyphicon glyphicon-picture"></span> Default text here</a>
-						</button>
-                </li>
-                <li>
-					
-						<button type="button" class="btn btn-default btn-lg col-sm-10 draggable" >
-							<span class="glyphicon glyphicon-star"></span> 1 Star
-							<a href="#" class="btn btn-lg btn-info"><span class="glyphicon glyphicon-picture"></span> Default text here</a>
-						</button>
-					
-                </li>
-				<li>
-					<button type="button" class="btn btn-default btn-lg col-sm-10 draggable" >
-							<span class="glyphicon glyphicon-star"></span> 2 Star
-							<a href="#" class="btn btn-lg btn-info"><span class="glyphicon glyphicon-picture"></span> Default text here</a>
-						</button>
-                </li>-->
                 
             </ul>
         </div>
@@ -125,25 +163,40 @@
                         <h1><center>Mail Editor</center></h1>
                         <div class="">
 							<div>
-							
-								
-						
-								<div id="templateHolder" class="sukrut_template_holder">
-
-									<div id="template_holder_header" class="sukrut_header" >
+								<div id="templateHolder" class="template_holder">
+									<div id="template_holder_header" class="header" >
 										<div id="tmp">Drop Header Content Here</div>
 									</div>
 									<br/><br/>
-									<div id="template_holder_body" class="sukrut_body">
-										<div id="tmp">Drop Body Content Here</div>
+									<!--<div class="column">
+ 
+									  <div class="portlet">
+										<div class="portlet-header">Feeds</div>
+										<div class="portlet-content">Lorem ipsum dolor sit amet, consectetuer adipiscing elit</div>
+									  </div>
+
+									  <div class="portlet">
+										<div class="portlet-header">News</div>
+										<div class="portlet-content">Lorem ipsum dolor sit amet, consectetuer adipiscing elit</div>
+									  </div>
+
+									</div>-->
+									<div id="template_holder_body" class="template_holder_body">
+										Drop body Content Here
 									</div>
 									<br/><br/>
-									<div id="template_holder_footer" class="sukrut_footer">
+									<div id="template_holder_footer" class="footer">
 										<div id="tmp">Drop Footer Content Here</div>
 									</div>
 
 
 									<div id="propertyToolbar">
+										<div id="toolbarItemsWrapper">
+											<div id = "move">Move</div>
+											<div id = "edit">Edit</div>
+											<div id = "copy">Copy</div>
+											<div id = "delete">Delete</div>
+										</div>
 										<!-- to be done by manan -->								
 									</div>
 

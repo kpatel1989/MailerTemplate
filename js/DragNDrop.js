@@ -19,7 +19,7 @@ DragNDrop.prototype = {
 	onStartCallBack : null,
 	onStopCallBack : null,
 	helperCss : "",
-	
+	draggListener : null,
 	
 	setDraggableObject : function(options){
 		if (!options || !options.draggableSelectors)
@@ -63,6 +63,9 @@ DragNDrop.prototype = {
 				stop : function(event, ui){
 					if (temp.onStopCallBack)
 				  		temp.onStopCallBack();
+				},
+				drag : function(event, ui){
+					temp.draggListener(ui);
 				}
 			});
 		});
@@ -87,5 +90,9 @@ DragNDrop.prototype = {
 			  }
 			});
 		});
+	},
+	listenToDrag : function(CallBackOnDrag){
+		this.draggListener = CallBackOnDrag;
+	
 	}
 }
