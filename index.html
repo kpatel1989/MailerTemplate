@@ -4,7 +4,6 @@
 		<title>Mail Template Editor </title>
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 		
-		
 		<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css"/>
 		<link rel="stylesheet" type="text/css" href="css/hover-min.css"/>
 		<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap-theme.min.css"/>
@@ -18,15 +17,20 @@
 		<script src="js/lib/jquery-ui-1.10.4.js"></script>
 		<script src="js/lib/handlebars-v1.3.0.js"></script>
 		<script src="bootstrap/js/bootstrap.min.js"></script>
+		
 		<script src="js/MailerTemplate.js"></script>
 		<script src="js/View/MainView.js"></script>		
+		<script src="js/View/DesignTemplateBody.js"></script>
+		<script src="js/View/DesignTemplateFooter.js"></script>
+		<script src="js/View/DesignTemplatePage.js"></script>
+		<script src="js/View/DesignTemplatePageHeader.js"></script>
 		<script src="js/View/TemplateItems.js"></script>
 		<script src="js/View/TemplateHolder.js"></script>
 		<script src="js/View/PropertyToolbar.js"></script>
 		<script src="js/DragNDrop.js"></script>
-		<script src="js/DragNDrop.js"></script>
+		
 		<script type="text/template" id="title">
-        <li id="titleTemplateItem" class="draggable">
+        <li id="titleTemplateItem" class="draggable ui-state-default">
             <a href="javascript:void(0)" class ="grow">
 				<img src="images/img_Text.png" class="img-rounded" alt = ""/>
 			</a>
@@ -34,124 +38,226 @@
 		</script>
 		
 		<script type="text/template" id="images">
-        <li id="imageTemplateItem" class="draggable">
+        <li id="imageTemplateItem" class="draggable ui-state-default">
             <a href="javascript:void(0)" class ="grow">
 					<img src="images/img_Image.png" class="img-rounded" alt = ""/>
 			</a>
 		</li>
 		</script>
 		<script type="text/template" id="TextPlusImage">
-        <li id="TextPlusImageTemplateItem" class="draggable">
+        <li id="TextPlusImageTemplateItem" class="draggable ui-state-default">
             <a href="javascript:void(0)" class ="grow" >
 					<img src="images/img_TextPlusImage.png" class="img-rounded" alt = ""/>
 			</a>
 		</li>
 		</script><script type="text/template" id="ImageCard">
-        <li id="ImageCardTemplateItem" class="draggable">
+        <li id="ImageCardTemplateItem" class="draggable ui-state-default">
             <a href="javascript:void(0)" class ="grow">
 					<img src="images/img_ImageCard.png" class="img-rounded" alt = ""/>
 			</a>
 		</li>
 		</script><script type="text/template" id="Divider">
-        <li id="DividerTemplateItem" class="draggable">
+        <li id="DividerTemplateItem" class="draggable ui-state-default">
             <a href="javascript:void(0)" class ="grow">
 					<img src="images/img_Divider.png" class="img-rounded" alt = ""/>
 			</a>
 		</li>
 		</script><script type="text/template" id="Gallery">
-        <li id="GalleryTemplateItem" class="draggable">
+        <li id="GalleryTemplateItem" class="draggable ui-state-default">
             <a href="javascript:void(0)" class ="grow">
 					<img src="images/img_Gallery.png" class="img-rounded" alt = ""/>
 			</a>
 		</li>
 		</script><script type="text/template" id="Button">
-        <li id="ButtonTemplateItem" class="draggable">
+        <li id="ButtonTemplateItem" class="draggable ui-state-default">
             <a href="javascript:void(0)" class ="grow">
 					<img src="images/img_Button.png" class="img-rounded" alt = ""/>
 			</a>
 		</li>
 		</script><script type="text/template" id="Video">
-        <li id="VideoTemplateItem" class="draggable">
+        <li id="VideoTemplateItem" class="draggable ui-state-default">
             <a href="javascript:void(0)" class ="grow">
 					<img src="images/img_Video.png" class="img-rounded" alt = ""/>
 			</a>
 		</li>
 		</script><script type="text/template" id="SocialLinks">
-        <li id="SocialLinksTemplateItem" class="draggable">
+        <li id="SocialLinksTemplateItem" class="draggable ui-state-default">
             <a href="javascript:void(0)" class ="grow">
 					<img src="images/img_SocialLink.png" class="img-rounded" alt = ""/>
 			</a>
 		</li>
 		</script>
+		<script type="text/template" id="background">
+			<div>
+				<div id="color"></div>
+				<div>
+					<input type="text" id="colorCode"/>
+				</div>
+			</div>
+		</script>
+		<script type="text/template" id="headingTextColor">
+			<div>
+				<div id="textcolor"></div>
+				<div>
+					<input type="text" id="colorCode"/>
+				</div>
+			</div>
+		</script>
+		<script type="text/template" id="fontfamily">
+			<select>
+				<option value="">Select</option>
+			</select>
+		</script>
+		<script type="text/template" id="fontsize">
+			<select>
+				<option value="">Select</option>
+			</select>
+		</script>
+		<script type="text/template" id="fontstyle">
+			<select>
+				<option value="">Select</option>
+			</select>
+		</script>
+		<script type="text/template" id="fontweight">
+			<select>
+				<option value="">Select</option>
+			</select>
+		</script>
+		<script type="text/template" id="lineheight">
+			<select>
+				<option value="">Select</option>
+			</select>
+		</script>
+		<script type="text/template" id="letterspacing">
+			<select>
+				<option value="">Select</option>
+			</select>
+		</script>
+		<script type="text/template" id="textalign">
+			<div></div>
+		</script>
+		<script type="text/template" id="textdecoration">
+			<select>
+				<option value="">Select</option>
+			</select>
+		</script>
+		<script type="text/template" id="titleDroppedItem">
+			<div class="titleDroppedItem droppedObject ui-state-default" id="titleTemplateItem0"> 
+				Put your Text Here 
+			</div>
+		</script>
+
+
+		<script type="text/template" id="imageDroppedItem">
+			<div id="titleTemplateItem0" class="imageDroppedItem droppedObject ui-state-default"> 
+				<center> 
+					<img src='../MailerTemplate/images/img_Image.png' /> 
+				</center> 
+			</div>
+		</script>
+
+
+		<script type="text/template" id="TextPlusImageDroppedItem">
+			<div id="TextPlusImageTemplateItem0" class="TextPlusImageDroppedItem droppedObject ui-state-default">  
+				<p  style='text-align:left;'>
+					This is some text. 
+					<img src='../MailerTemplate/images/img_Image.png' alt='Smiley face' align='left'>
+					<br/><br/><br/><br/><br/><br/><br/> 
+					This is some text.
+				</p>  
+			</div>
+		</script>
+
+
+
+		<script type="text/template" id="ImageCardDroppedItem">
+			<div id="ImageCardTemplateItem0" class="ImageCardDroppedItem droppedObject ui-state-default"> 
+				<center>
+					<div> 
+						<img src='../MailerTemplate/images/img_Image.png' />
+					</div>
+					<div>
+						Some Text
+					</div> 
+				</center> 
+			</div>
+		</script>
+
+
+
+
+		<script type="text/template" id="ButtonDroppedItem">
+			<div id="ButtonTemplateItem0" class="ButtonDroppedItem droppedObject ui-state-default"> 
+				<center> 
+					<input type='Button' value='Button' /> 
+				</center> 
+			</div>
+		</script>
+
+
+
+
+		<script type="text/template" id="SocialLinksDroppedItem">
+			<div id="SocialLinksTemplateItem0" class="SocialLinksDroppedItem droppedObject ui-state-default"> 
+				<p > 
+					<a href="https://twitter.com/login"><img src='../MailerTemplate/images/Twitter.png' alt='Twitter' /> </a>
+					<img src='images/Twitter.png' alt='Twitter'/>  
+					<img src='images/Twitter.png' alt='Twitter'/>  
+					<img src='images/Twitter.png' alt='Twitter'/>  
+				</p> 
+			</div>
+		</script>
+
+
+
+
+		<script type="text/template" id="VideoDroppedItem">
+			<div id="VideoTemplateItem0" class="VideoDroppedItem droppedObject ui-state-default"> 
+				<center> 
+					<video src='../MailerTemplate/images/a.mp4' height='200px' width='300px' controls></video> 
+				</center> 
+			</div>
+		</script>
+
+		<script type="text/template" id="DividerDroppedItem">
+			<div id="DividerTemplateItem0" class="DividerDroppedItem droppedObject ui-state-default"> 
+				<hr > 
+			</div>
+		</script>
 		
-		<style>
-		 *{
-			 -webkit-user-select : none;
-		 }
-		  .column {
-			width: 170px;
-			float: left;
-			padding-bottom: 100px;
-		  }
-		  .portlet {
-			  background-color: green;
-			margin: 0 1em 1em 0;
-			padding: 0.3em;
-		  }
-		  .portlet-header {
-			padding: 0.2em 0.3em;
-			margin-bottom: 0.5em;
-			position: relative;
-		  }
-		  .portlet-toggle {
-			position: absolute;
-			top: 50%;
-			right: 0;
-			margin-top: -8px;
-		  }
-		  .portlet-content {
-			padding: 0.4em;
-		  }
-		  .portlet-placeholder {
-			border: 1px dotted black;
-			margin: 0 1em 1em 0;
-			height: 50px;
-		  }
-		  </style>
-		  <script>
-		  $(function() {
-			$( ".column" ).sortable({
-			  connectWith: ".column",
-			  handle: ".portlet-header",
-			  cancel: ".portlet-toggle",
-			  placeholder: "portlet-placeholder ui-corner-all"
-			});
-
-			$( ".portlet" )
-			  .addClass( "ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" )
-			  .find( ".portlet-header" )
-				.addClass( "ui-widget-header ui-corner-all" )
-				.prepend( "<span class='ui-icon ui-icon-minusthick portlet-toggle'></span>");
-
-			$( ".portlet,.portlet-content" ).click(function() {
-			  var icon = $( this );
-			  icon.toggleClass( "ui-icon-minusthick ui-icon-plusthick" );
-			  icon.closest( ".portlet" ).find( ".portlet-content" ).toggle();
-			});
-		  });
-	  </script>
 	</head>
 	<body>
 		<div id="wrapper">
-
+		
         <!-- Sidebar -->
         <div id="sidebar-wrapper">
+			<ul  class="ButtonHolder">
+				<li class="btn-group" data-toggle="buttons">
+					 <label class="btn btn-default active">
+						<input type="radio" name="options" id="option2" autocomplete="off"> Content
+					</label>
+					<label class="btn btn-default">
+						<input type="radio" name="options" id="option2" autocomplete="off"> Design
+					</label>
+				</li>
+			</ul>
+			<hr class="hr_margin">
             <ul class="sidebar-nav" id="templateItems">
                 <li class="sidebar-brand">
                     <div style="text-align: center;"><h3>Template Items</h3></div>
                 </li>
                 
             </ul>
+			<ul id="templateDesign">
+				<li class="sidebar-brand">
+                    <div style="text-align: center;color:white;"><h3>Design</h3></div>
+                </li>
+				<li><a href="javascript:void(0)">Page</a></li>
+				<li><a href="javascript:void(0)">PreHeader</a></li>
+				<li><a href="javascript:void(0)">Header</a></li>
+				<li><a href="javascript:void(0)">Columns</a></li>
+				<li><a href="javascript:void(0)">Footer</a></li>
+			</ul>
         </div>
         <!-- /#sidebar-wrapper -->
 
@@ -164,29 +270,16 @@
                         <div class="">
 							<div>
 								<div id="templateHolder" class="template_holder">
-									<div id="template_holder_header" class="header" >
-										<div id="tmp">Drop Header Content Here</div>
+									<div id="template_holder_header" class="header sortable" >
+										
 									</div>
 									<br/><br/>
-									<!--<div class="column">
- 
-									  <div class="portlet">
-										<div class="portlet-header">Feeds</div>
-										<div class="portlet-content">Lorem ipsum dolor sit amet, consectetuer adipiscing elit</div>
-									  </div>
-
-									  <div class="portlet">
-										<div class="portlet-header">News</div>
-										<div class="portlet-content">Lorem ipsum dolor sit amet, consectetuer adipiscing elit</div>
-									  </div>
-
-									</div>-->
-									<div id="template_holder_body" class="template_holder_body">
-										Drop body Content Here
+									<div id="template_holder_body" class="template_holder_body sortable">
+										
 									</div>
 									<br/><br/>
-									<div id="template_holder_footer" class="footer">
-										<div id="tmp">Drop Footer Content Here</div>
+									<div id="template_holder_footer" class="footer sortable">
+										
 									</div>
 
 
@@ -210,59 +303,7 @@
             </div>
         </div>
         <!-- /#page-content-wrapper -->
-
     </div>
-    <!-- /#wrapper -->
-		<!--
-		<div class="content-body container-fluid">
-			<div class="row-fluid">
-				<div id="topPanel" class="span2">
-					awdawd awd aw
-					<!--<div id="templateItemHolder">
-						  <div class="span4"> 
-							<button type="button" class="btn btn-default btn-lg col-md-1" >
-								<span class="glyphicon glyphicon-star"></span> 1 Star
-								<a href="#" class="btn btn-lg btn-info"><span class="glyphicon glyphicon-picture"></span> Default text here</a>
-							</button>
-						 </div>
-						<div class="span6">
-							<button type="button" class="btn btn-default btn-lg col-md-2" >
-								<span class="glyphicon glyphicon-star"></span> 2 Star
-								<a href="#" class="btn btn-lg btn-info"><span class="glyphicon glyphicon-picture"></span> Default text here</a>
-							</button>
-						</div>
-						<div class="span3">
-							<button type="button" class="btn btn-default btn-lg col-md-2" >
-								<span class="glyphicon glyphicon-star"></span> 3 Star
-							</button>
-						</div>
-					</div>
-
-					<div id="propertiesPanel">
-
-					</div>
-
-				</div>
-				<div class="span10" >
-					sdf6 htht t7t7
-
-					<div id="bottomPanel">
-						<div id="hScroller">
-							Text
-							<div id="templateHolder">
-
-							</div>
-							<div id="propertyToolbar">
-
-							</div>
-							Text
-						</div>
-					</div>
-
-				</div>
-			</div>
-		</div>
--->
 	</body>
 
 </html>

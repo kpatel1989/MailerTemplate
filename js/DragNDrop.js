@@ -65,7 +65,7 @@ DragNDrop.prototype = {
 				  		temp.onStopCallBack();
 				},
 				drag : function(event, ui){
-					temp.draggListener(ui);
+					temp.draggListener.OnTemplateItemDragged(ui);
 				}
 			});
 		});
@@ -86,7 +86,7 @@ DragNDrop.prototype = {
 				  element.css('display','block');
 				 // $(this).append(element);
 				  if (temp.onDropCallBack)
-					  temp.onDropCallBack(this,element);
+					  temp.onDropCallBack.onDrop(this,element);
 			  }
 			});
 		});

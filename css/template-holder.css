@@ -44,12 +44,20 @@ div#toolbarItemsWrapper {
     background: #5C5C5C;
 }
 
-div#move,#edit,#copy,#delete {
+div#move, #edit, #delete, #copy {
     width: 50px;
     display: inline-block;
-    background: #DADADA;
+    background: #7290FA;
     border-radius: 2px;
-    color: black;
+    color: #FFF;
+}
+div#copy
+{
+width: 80px;
+    
+    
+    
+    
 }
 
 div#move:hover, #edit:hover, #copy:hover, #delete:hover {

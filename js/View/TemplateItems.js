@@ -1,6 +1,5 @@
 MailerTemplate.Views.TemplateItems = Backbone.View.extend({
 	m_lstTemplates : null,
-	
 	initialize : function(){
 		this.m_lstTemplates = [];
 		var temp =this;
@@ -40,7 +39,6 @@ MailerTemplate.Views.TemplateItems = Backbone.View.extend({
 		$.each(temp.m_lstTemplates, function(i,item){
 			element = item({});
 			temp.$el.append(element);
-		});
-		
+		});	
 	}
 });

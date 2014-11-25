@@ -3,7 +3,7 @@
     white-space: normal;
 }
 html, body {
-    height: 100%;
+    max-height: 100%;
 }
 body * {
     display: block;
@@ -97,4 +97,32 @@ ul.sidebar-nav
 {
 	padding-bottom: 10px;
 	overflow-x: hidden;
+}
+
+.droppedObject 
+{
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	
+}
+
+div#DividerTemplateItem3 {
+    height: 40px;
+}
+
+.ui-state-highlight 
+{
+	height: 40px;
+	line-height: 40px;
+	border: 3px solid #1550B1;
+	background-color: #C6DCE5;
+}
+ul.ButtonHolder {
+    padding: 0px;
+    text-align: center;
+}
+
+.ButtonHolder label {
+    width: 135px;
 }
