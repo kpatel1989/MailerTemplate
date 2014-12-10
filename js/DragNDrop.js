@@ -45,6 +45,7 @@ DragNDrop.prototype = {
 			var dragSelector = item.draggable;
 			var dropSelector = item.droppable;
 			$(dragSelector).draggable({
+				connectToSortable: ".sortable",
 				helper : temp.helperElement,
 				containment : 'document',
 				appendTo : "body",
@@ -65,7 +66,8 @@ DragNDrop.prototype = {
 				  		temp.onStopCallBack();
 				},
 				drag : function(event, ui){
-					temp.draggListener.OnTemplateItemDragged(ui);
+					if (temp.draggListener)
+						temp.draggListener.OnTemplateItemDragged(ui);
 				}
 			});
 		});
@@ -82,11 +84,12 @@ DragNDrop.prototype = {
 			var dropSelector = item.droppable;
 			$(dropSelector).droppable({
 			  drop: function( event, ui ) {
-				  element = $(ui.draggable).clone();
+				 /* element = $(ui.draggable).clone();
 				  element.css('display','block');
 				 // $(this).append(element);
 				  if (temp.onDropCallBack)
 					  temp.onDropCallBack.onDrop(this,element);
+					  */
 			  }
 			});
 		});

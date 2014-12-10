@@ -32,6 +32,8 @@ MailerTemplate.Views.TemplateItems = Backbone.View.extend({
 		return dropped;
 	},
 	render : function(){
+		var h = parseInt(this.$el.parent()[0].offsetHeight) - this.$el[0].offsetTop;
+		this.$el.css({height:h+"px"});
 		this.loadTemplates();
 	},
 	loadTemplates : function(){

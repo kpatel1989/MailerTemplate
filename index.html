@@ -6,11 +6,13 @@
 		
 		<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css"/>
 		<link rel="stylesheet" type="text/css" href="css/hover-min.css"/>
-		<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap-theme.min.css"/>
+		<!-- <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap-theme.min.css"/> -->
 		<link rel="stylesheet" type="text/css" href="css/simple-sidebar.css"/>
 		<link rel="stylesheet" type="text/css" href="css/style.css"/>
 		<link rel="stylesheet" type="text/css" href="css/template-holder.css"/>
 		
+		
+		<script src="js/lib/ckeditor/ckeditor.js"></script>
 		<script src="js/lib/underscore.js"></script>
 		<script src="js/lib/jquery-1.11.0.js"></script>
 		<script src="js/lib/backbone.js"></script>
@@ -19,18 +21,25 @@
 		<script src="bootstrap/js/bootstrap.min.js"></script>
 		
 		<script src="js/MailerTemplate.js"></script>
-		<script src="js/View/MainView.js"></script>		
+		
+		<script src="js/Model/TitleModel.js"></script>
+		
+		
+		<script src="js/View/MainView.js"></script>
+		<script src="js/View/PropertyPanels/TitlePanel.js"></script>
+		<script src="js/View/PropertiesPanel.js"></script>
 		<script src="js/View/DesignTemplateBody.js"></script>
 		<script src="js/View/DesignTemplateFooter.js"></script>
 		<script src="js/View/DesignTemplatePage.js"></script>
 		<script src="js/View/DesignTemplatePageHeader.js"></script>
 		<script src="js/View/TemplateItems.js"></script>
+		<script src="js/View/TemplateElements/TitleElement.js"></script>
 		<script src="js/View/TemplateHolder.js"></script>
 		<script src="js/View/PropertyToolbar.js"></script>
 		<script src="js/DragNDrop.js"></script>
 		
 		<script type="text/template" id="title">
-        <li id="titleTemplateItem" class="draggable ui-state-default">
+        <li id="titleTemplateItem" class="draggable ui-state-default" type="title">
             <a href="javascript:void(0)" class ="grow">
 				<img src="images/img_Text.png" class="img-rounded" alt = ""/>
 			</a>
@@ -38,50 +47,50 @@
 		</script>
 		
 		<script type="text/template" id="images">
-        <li id="imageTemplateItem" class="draggable ui-state-default">
+        <li id="imageTemplateItem" class="draggable ui-state-default" type="images">
             <a href="javascript:void(0)" class ="grow">
 					<img src="images/img_Image.png" class="img-rounded" alt = ""/>
 			</a>
 		</li>
 		</script>
 		<script type="text/template" id="TextPlusImage">
-        <li id="TextPlusImageTemplateItem" class="draggable ui-state-default">
+        <li id="TextPlusImageTemplateItem" class="draggable ui-state-default" type="TextPlusImage">
             <a href="javascript:void(0)" class ="grow" >
 					<img src="images/img_TextPlusImage.png" class="img-rounded" alt = ""/>
 			</a>
 		</li>
 		</script><script type="text/template" id="ImageCard">
-        <li id="ImageCardTemplateItem" class="draggable ui-state-default">
+        <li id="ImageCardTemplateItem" class="draggable ui-state-default" type="ImageCard">
             <a href="javascript:void(0)" class ="grow">
 					<img src="images/img_ImageCard.png" class="img-rounded" alt = ""/>
 			</a>
 		</li>
 		</script><script type="text/template" id="Divider">
-        <li id="DividerTemplateItem" class="draggable ui-state-default">
+        <li id="DividerTemplateItem" class="draggable ui-state-default" type="Divider">
             <a href="javascript:void(0)" class ="grow">
 					<img src="images/img_Divider.png" class="img-rounded" alt = ""/>
 			</a>
 		</li>
 		</script><script type="text/template" id="Gallery">
-        <li id="GalleryTemplateItem" class="draggable ui-state-default">
+        <li id="GalleryTemplateItem" class="draggable ui-state-default" type="Gallery">
             <a href="javascript:void(0)" class ="grow">
 					<img src="images/img_Gallery.png" class="img-rounded" alt = ""/>
 			</a>
 		</li>
 		</script><script type="text/template" id="Button">
-        <li id="ButtonTemplateItem" class="draggable ui-state-default">
+        <li id="ButtonTemplateItem" class="draggable ui-state-default" type="Button">
             <a href="javascript:void(0)" class ="grow">
 					<img src="images/img_Button.png" class="img-rounded" alt = ""/>
 			</a>
 		</li>
 		</script><script type="text/template" id="Video">
-        <li id="VideoTemplateItem" class="draggable ui-state-default">
+        <li id="VideoTemplateItem" class="draggable ui-state-default" type="Video">
             <a href="javascript:void(0)" class ="grow">
 					<img src="images/img_Video.png" class="img-rounded" alt = ""/>
 			</a>
 		</li>
 		</script><script type="text/template" id="SocialLinks">
-        <li id="SocialLinksTemplateItem" class="draggable ui-state-default">
+        <li id="SocialLinksTemplateItem" class="draggable ui-state-default" type="SocialLinks">
             <a href="javascript:void(0)" class ="grow">
 					<img src="images/img_SocialLink.png" class="img-rounded" alt = ""/>
 			</a>
@@ -142,14 +151,14 @@
 			</select>
 		</script>
 		<script type="text/template" id="titleDroppedItem">
-			<div class="titleDroppedItem droppedObject ui-state-default" id="titleTemplateItem0"> 
+			<div class="titleDroppedItem droppedObject ui-state-default" id="titleTemplateItem0" type="title"> 
 				Put your Text Here 
 			</div>
 		</script>
 
 
 		<script type="text/template" id="imageDroppedItem">
-			<div id="titleTemplateItem0" class="imageDroppedItem droppedObject ui-state-default"> 
+			<div id="titleTemplateItem0" class="imageDroppedItem droppedObject ui-state-default" type="image"> 
 				<center> 
 					<img src='../MailerTemplate/images/img_Image.png' /> 
 				</center> 
@@ -158,7 +167,7 @@
 
 
 		<script type="text/template" id="TextPlusImageDroppedItem">
-			<div id="TextPlusImageTemplateItem0" class="TextPlusImageDroppedItem droppedObject ui-state-default">  
+			<div id="TextPlusImageTemplateItem0" class="TextPlusImageDroppedItem droppedObject ui-state-default" type="TextPlusImage">  
 				<p  style='text-align:left;'>
 					This is some text. 
 					<img src='../MailerTemplate/images/img_Image.png' alt='Smiley face' align='left'>
@@ -171,7 +180,7 @@
 
 
 		<script type="text/template" id="ImageCardDroppedItem">
-			<div id="ImageCardTemplateItem0" class="ImageCardDroppedItem droppedObject ui-state-default"> 
+			<div id="ImageCardTemplateItem0" class="ImageCardDroppedItem droppedObject ui-state-default" type="ImageCard"> 
 				<center>
 					<div> 
 						<img src='../MailerTemplate/images/img_Image.png' />
@@ -187,7 +196,7 @@
 
 
 		<script type="text/template" id="ButtonDroppedItem">
-			<div id="ButtonTemplateItem0" class="ButtonDroppedItem droppedObject ui-state-default"> 
+			<div id="ButtonTemplateItem0" class="ButtonDroppedItem droppedObject ui-state-default" type="Button"> 
 				<center> 
 					<input type='Button' value='Button' /> 
 				</center> 
@@ -198,7 +207,7 @@
 
 
 		<script type="text/template" id="SocialLinksDroppedItem">
-			<div id="SocialLinksTemplateItem0" class="SocialLinksDroppedItem droppedObject ui-state-default"> 
+			<div id="SocialLinksTemplateItem0" class="SocialLinksDroppedItem droppedObject ui-state-default" type="SocialLinks"> 
 				<p > 
 					<a href="https://twitter.com/login"><img src='../MailerTemplate/images/Twitter.png' alt='Twitter' /> </a>
 					<img src='images/Twitter.png' alt='Twitter'/>  
@@ -212,7 +221,7 @@
 
 
 		<script type="text/template" id="VideoDroppedItem">
-			<div id="VideoTemplateItem0" class="VideoDroppedItem droppedObject ui-state-default"> 
+			<div id="VideoTemplateItem0" class="VideoDroppedItem droppedObject ui-state-default" type="Video"> 
 				<center> 
 					<video src='../MailerTemplate/images/a.mp4' height='200px' width='300px' controls></video> 
 				</center> 
@@ -220,13 +229,32 @@
 		</script>
 
 		<script type="text/template" id="DividerDroppedItem">
-			<div id="DividerTemplateItem0" class="DividerDroppedItem droppedObject ui-state-default"> 
+			<div id="DividerTemplateItem0" class="DividerDroppedItem droppedObject ui-state-default" type="Divider"> 
 				<hr > 
 			</div>
 		</script>
-		
+		<script type="text/template" id="propertyStructure">
+			<div id="propertyParent">
+				<div id="propteryHeader" class="page-header"><%= title %> </div>
+				<div id="propertyTab" class="btn-group" role="group">
+					<button type="button" class="btn btn-default" id="contentTabButton">Content</button>
+					<button type="button" class="btn btn-default" id="styleTabButton">Style</button>
+					<button type="button" class="btn btn-default" id="settingsTabButton">Settings</button>
+				</div>
+				<div id="propertyBody">
+					<%= propertyBody %>
+				</div>
+			</div>
+		</script>
+		<script type="text/template" id="titlePanelBody">
+			<div id="titleBody">
+				<textarea name="titleText" id="titleText"> </textarea>
+				<input type="button" value="Save and exit" id="saveProperties"/> 
+			</div>
+		</script>
 	</head>
 	<body>
+		
 		<div id="wrapper">
 		
         <!-- Sidebar -->
@@ -258,6 +286,9 @@
 				<li><a href="javascript:void(0)">Columns</a></li>
 				<li><a href="javascript:void(0)">Footer</a></li>
 			</ul>
+			<div id="propertyPanel" class="PropertyPanel">
+				
+			</div>
         </div>
         <!-- /#sidebar-wrapper -->
 
@@ -270,32 +301,31 @@
                         <div class="">
 							<div>
 								<div id="templateHolder" class="template_holder">
-									<div id="template_holder_header" class="header sortable" >
+									<div id="template_holder_header" class="header sortable droppable" >
 										
 									</div>
 									<br/><br/>
-									<div id="template_holder_body" class="template_holder_body sortable">
+									<div id="template_holder_body" class="template_holder_body sortable droppable">
 										
 									</div>
 									<br/><br/>
-									<div id="template_holder_footer" class="footer sortable">
+									<div id="template_holder_footer" class="footer sortable droppable">
 										
 									</div>
 
 
 									<div id="propertyToolbar">
 										<div id="toolbarItemsWrapper">
-											<div id = "move">Move</div>
+											<div class="moveable">
+												<div id = "move" class ="ui-state-default">Move</div> 
+											</div>
 											<div id = "edit">Edit</div>
 											<div id = "copy">Copy</div>
 											<div id = "delete">Delete</div>
 										</div>
 										<!-- to be done by manan -->								
 									</div>
-
 								</div>
-								
-								
 							</div>
 						</div>
                     </div>

@@ -60,8 +60,16 @@ width: 80px;
     
 }
 
-div#move:hover, #edit:hover, #copy:hover, #delete:hover {
+#edit:hover, #copy:hover, #delete:hover {
     cursor: pointer;
     background: #5193C8;
     color: white;
+}
+
+.moveable {
+    display: inline-block;
+    cursor: move!important;
+}
+div#move {
+    cursor: move;
 }

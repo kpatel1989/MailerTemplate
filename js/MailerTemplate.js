@@ -2,6 +2,7 @@ var mainView;
 var dragNDropHandler;
 var designView
 $(document).ready(function(){
+	$("#sidebar-wrapper,#page-content-wrapper").css({"height":window.innerHeight});
 	dragNDropHandler = new DragNDrop({dragSelector : ".draggable", dropSelector : ".droppable"});
 	mainView = new MailerTemplate.Views.MainView({el : "#wrapper"});
 	$('#sidebar-wrapper ul:first li label').click(function(){
@@ -20,6 +21,17 @@ window.MailerTemplate = {
 	Models : {},
 	Collections : {},
 	Views : {},
+	TemplateItems : {
+		TITLE : "title",
+		IMAGE : "images",
+		TEXTPLUSIMAGE : "textPlusImage",
+		IMAGECARD : "ImageCard",
+		DIVIDER : "Divider",
+		GALLERY : "Gallery",
+		BUTTON : "Button",
+		VIDEO : "Video",
+		SOCIALLINKS : "SocialLinks"
+	},
 	Templates : [ 
 			"title",
 			"images",
