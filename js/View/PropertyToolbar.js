@@ -51,9 +51,11 @@ MailerTemplate.Views.PropertyToolbar = Backbone.View.extend({
 				$(".moveable").css("display","block");
 				var type = $(temp.m_hoveredElement).attr('type');
 				var helperElement = $('#' + type + 'DroppedItem').html();
-				$(helperElement).css({"background-color" : "gray",
-										"width" :"auto",
+				helperElement = $(temp.m_hoveredElement).clone();
+				$(helperElement).css({"width" :"auto",
 										"height":"40px"});
+				//$(helperElement).filter("div").attr("id",$(temp.m_hoveredElement).attr("id"));
+				//$(helperElement).html($(temp.m_hoveredElement).html());
 				return helperElement;
 			},
 			start : function(event, ui){
@@ -100,17 +102,11 @@ MailerTemplate.Views.PropertyToolbar = Backbone.View.extend({
 	},
 	copyClicked : function()
 	{
-		
-//		var tempObj=$('#' + property_DroppedObject).html();
-//		$("#" + property_DroppableObject.id).append(tempObj);
-//		alert("property_DroppedObject: " + property_DroppedObject);
-//		alert("property_DroppableObject.id: " + property_DroppableObject.id);
-//		$("#" + property_DroppedObject + "0").prop("id","abccd");
-		//$("#abccd").(new MailerTemplate.Views.TemplateHolder()).ApplyHoverEvent();
+		this.trigger(MailerTemplate.Views.PropertyToolbar.COPY_BTN_CLICKED,this.m_hoveredElement);
 	},
 	deleteClicked : function()
 	{
-		$("#" + element_Id).hide();
+		this.trigger(MailerTemplate.Views.PropertyToolbar.DELETE_BTN_CLICKED,this.m_hoveredElement);
 	}
 });
 

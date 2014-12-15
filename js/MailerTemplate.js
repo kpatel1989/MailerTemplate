@@ -46,12 +46,28 @@ window.MailerTemplate = {
 	DesignTemplate : [
 		"background",
 		"headingTextColor",
-		"fontfamily",
-		"fontsize",
+		"fontFamily",
+		"fontSize",
 		"fontstyle",
-		"fontweight",
-		"lineheight",
+		"fontWeight",
+		"lineHeight",
 		"letterspacing",
-		"textalign"
+		"textAlign"
 		],
+	StyleProperties : {
+		fontColor : "#000",
+		fontFamily : "Arial",
+		fontSize : "16px",
+		fontWeight : "initial",
+		lineHeight : "initial",
+		textAlign : "center"
+	},
+	CssStyleConnector : {
+		fontColor : "color",
+		fontFamily : "font-family",
+		fontSize : "font-size",
+		fontWeight : "font-weight",
+		lineHeight : "line-height",
+		textAlign : "text-align"
 	}
+}

@@ -10,7 +10,7 @@
 		<link rel="stylesheet" type="text/css" href="css/simple-sidebar.css"/>
 		<link rel="stylesheet" type="text/css" href="css/style.css"/>
 		<link rel="stylesheet" type="text/css" href="css/template-holder.css"/>
-		
+  		<link href="js/lib/formpicker/css/bootstrap-formhelpers.min.css" rel="stylesheet" media="screen">
 		
 		<script src="js/lib/ckeditor/ckeditor.js"></script>
 		<script src="js/lib/underscore.js"></script>
@@ -19,6 +19,7 @@
 		<script src="js/lib/jquery-ui-1.10.4.js"></script>
 		<script src="js/lib/handlebars-v1.3.0.js"></script>
 		<script src="bootstrap/js/bootstrap.min.js"></script>
+		<script src="js/lib/formpicker/js/bootstrap-formhelpers.min.js"></script>
 		
 		<script src="js/MailerTemplate.js"></script>
 		
@@ -26,6 +27,7 @@
 		
 		
 		<script src="js/View/MainView.js"></script>
+		<script src="js/View/PropertyPanels/StyleTab.js"></script>
 		<script src="js/View/PropertyPanels/TitlePanel.js"></script>
 		<script src="js/View/PropertiesPanel.js"></script>
 		<script src="js/View/DesignTemplateBody.js"></script>
@@ -95,60 +97,6 @@
 					<img src="images/img_SocialLink.png" class="img-rounded" alt = ""/>
 			</a>
 		</li>
-		</script>
-		<script type="text/template" id="background">
-			<div>
-				<div id="color"></div>
-				<div>
-					<input type="text" id="colorCode"/>
-				</div>
-			</div>
-		</script>
-		<script type="text/template" id="headingTextColor">
-			<div>
-				<div id="textcolor"></div>
-				<div>
-					<input type="text" id="colorCode"/>
-				</div>
-			</div>
-		</script>
-		<script type="text/template" id="fontfamily">
-			<select>
-				<option value="">Select</option>
-			</select>
-		</script>
-		<script type="text/template" id="fontsize">
-			<select>
-				<option value="">Select</option>
-			</select>
-		</script>
-		<script type="text/template" id="fontstyle">
-			<select>
-				<option value="">Select</option>
-			</select>
-		</script>
-		<script type="text/template" id="fontweight">
-			<select>
-				<option value="">Select</option>
-			</select>
-		</script>
-		<script type="text/template" id="lineheight">
-			<select>
-				<option value="">Select</option>
-			</select>
-		</script>
-		<script type="text/template" id="letterspacing">
-			<select>
-				<option value="">Select</option>
-			</select>
-		</script>
-		<script type="text/template" id="textalign">
-			<div></div>
-		</script>
-		<script type="text/template" id="textdecoration">
-			<select>
-				<option value="">Select</option>
-			</select>
 		</script>
 		<script type="text/template" id="titleDroppedItem">
 			<div class="titleDroppedItem droppedObject ui-state-default" id="titleTemplateItem0" type="title"> 
@@ -234,23 +182,10 @@
 			</div>
 		</script>
 		<script type="text/template" id="propertyStructure">
-			<div id="propertyParent">
-				<div id="propteryHeader" class="page-header"><%= title %> </div>
-				<div id="propertyTab" class="btn-group" role="group">
-					<button type="button" class="btn btn-default" id="contentTabButton">Content</button>
-					<button type="button" class="btn btn-default" id="styleTabButton">Style</button>
-					<button type="button" class="btn btn-default" id="settingsTabButton">Settings</button>
-				</div>
-				<div id="propertyBody">
-					<%= propertyBody %>
-				</div>
-			</div>
+			
 		</script>
 		<script type="text/template" id="titlePanelBody">
-			<div id="titleBody">
-				<textarea name="titleText" id="titleText"> </textarea>
-				<input type="button" value="Save and exit" id="saveProperties"/> 
-			</div>
+			
 		</script>
 	</head>
 	<body>
@@ -287,7 +222,106 @@
 				<li><a href="javascript:void(0)">Footer</a></li>
 			</ul>
 			<div id="propertyPanel" class="PropertyPanel">
-				
+				<div id="propertyParent">
+					<div id="propteryHeader" class="page-header"></div>
+					<div id="propertyTab">
+					  <div class="nav nav-tabs btn-group" role="tablist" data-toggle="buttons">
+						<div href="#propertyBody" class="btn btn-default active propertyTabBtn" role="tab" aria-controls="propertyBody" data-toggle="tab">
+							<input type="radio" name="options" id="contentTabButton" autocomplete="off" checked>
+							Content
+						 </div>
+						 <div href="#styletab" class="btn btn-default propertyTabBtn" role="tab" aria-controls="styletab" data-toggle="tab">
+							  <input type="radio" name="options" id="contentTabButton" autocomplete="off" checked>
+							  Style
+						 </div>
+						 <div href="#settingsTab" class="btn btn-default propertyTabBtn" role="tab" aria-controls="settingsTab" data-toggle="tab">
+							  <input type="radio" name="options" id="contentTabButton" autocomplete="off" checked>
+							  Settings
+						 </div>
+					</div>
+
+					  <!-- Tab panes -->
+					  <div class="tab-content">
+						<div role="tabpanel" class="tab-pane active" id="propertyBody">
+						  	<div id="titleBody">
+								<textarea name="titleText" id="titleText"> </textarea>
+								<input type="button" value="Save and exit" id="saveProperties"/> 
+							</div>
+					  	</div>
+						<div role="tabpanel" class="tab-pane" id="styletab">
+							<div class="styleHeader">
+								Type
+							</div>
+							<div>
+								<div id="textColorParent">
+									<div> Text Color </div>
+									<div style="width:150px">
+										<div class="bfh-colorpicker" data-name="colorpicker1" id="fontColor"></div>
+									</div>
+								</div>
+								<div id="backgroundColorParent">
+									<div> Background Color </div>
+									<div style="width:150px">	
+										<div class="bfh-colorpicker" data-name="colorpicker1" id="backgroundColor"></div>
+									</div>
+								</div>
+								<div id="headingTextColorParent">
+									<div>Heading Text Color</div>
+									<div class="bfh-colorpicker" data-name="colorpicker1" id="headingTextColor"></div>
+								</div>
+								<div id="fontFamilyParent">
+									<div>Font Family</div>
+									<div class="bfh-selectbox bfh-fonts" data-font="Lato" id="fontFamily" data-blank=false></div>
+								</div>
+								<div id="fontSizeParent">
+									<div>Font Size</div>
+									<div class="bfh-selectbox bfh-fontsizes" data-fontsize="12" id="fontSize" data-blank=false></div>
+								</div>
+								<div id="fontWeightParent">
+									<div>Font Weight</div>
+									<div class="bfh-selectbox" data-name="selectbox1" id="fontWeight">
+										<div data-value="1">Not Specified</div>
+										<div data-value="2">Normal</div>
+										<div data-value="3">Bold</div>
+									</div>
+								</div>
+								<div id="lineHeightParent">
+									<div>Line Height</div>
+									<div class="bfh-selectbox" data-name="selectbox1" id="lineHeight">
+										<div data-value="1">Not Specified</div>
+										<div data-value="2">Normal</div>
+										<div data-value="3">Slight</div>
+										<div data-value="2">1 1/2 spacing</div>
+										<div data-value="3">Double Space</div>
+									</div>
+								</div>
+								<div id="textAlignParent">
+									<div> Text Align</div>
+									<div class="btn-group" data-toggle="buttons" id="textAlign">
+										<label class="btn btn-default active">
+											<input type="radio" name="options" id="textAlignLeft" autocomplete="off" checked alignType="left">
+											<span class="glyphicon glyphicon-align-left" aria-hidden="true"></span>
+										</label>
+										<label class="btn btn-default">
+											<input type="radio" name="options" id="textAlignCenter" autocomplete="off" checked alignType="center">
+											<span class="glyphicon glyphicon-align-center" aria-hidden="true"></span>
+										</label>
+										<label class="btn btn-default">
+											<input type="radio" name="options" id="textAlignRight" autocomplete="off" checked alignType="right">
+											<span class="glyphicon glyphicon-align-right" aria-hidden="true"></span>
+										</label>
+										<label class="btn btn-default">
+											<input type="radio" name="options" id="textAlignJustified" autocomplete="off" checked alignType="justified">
+											<span class="glyphicon glyphicon-align-justify" aria-hidden="true"></span>
+										</label>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div role="tabpanel" class="tab-pane" id="settingsTab">settings</div>
+					  </div>
+					</div>
+				</div>
 			</div>
         </div>
         <!-- /#sidebar-wrapper -->
@@ -332,6 +366,7 @@
                 </div>
             </div>
         </div>
+		
         <!-- /#page-content-wrapper -->
     </div>
 	</body>

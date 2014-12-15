@@ -3,10 +3,15 @@ MailerTemplate.Views.PropertyPanel = Backbone.View.extend({
 	m_activePanel : null,
 	m_Model : null,
 	
+	
 	initialize : function(){
 		this.m_TitlePanel =  new MailerTemplate.Views.TitlePanel({el : "#propertyPanel"});
+		this.m_PropertyTab = $("#propertyTab");
 		this.m_activePanel = this.m_TitlePanel;
 		this.render();
+	},
+	events : {
+		
 	},
 	setModel : function(model){
 		this.m_Model = model;
@@ -42,7 +47,8 @@ MailerTemplate.Views.PropertyPanel = Backbone.View.extend({
 
 		}
 		var h = window.innerHeight - $("#propertyBody")[0].offsetTop;
-		$("#propertyBody").css({height:h+"px"});
+		$("#propertyBody").parent().css({height:h+"px",overflow:"auto"});
+		
 		this.$el.animate({right:0},300);
 	},
 	

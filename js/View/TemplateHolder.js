@@ -21,7 +21,8 @@ MailerTemplate.Views.TemplateHolder = Backbone.View.extend({
 		this.ApplySortingEvent();
 		this.m_PropertyToolbar = new MailerTemplate.Views.PropertyToolbar({el : "#propertyToolbar"});
 		this.listenTo(this.m_PropertyToolbar,MailerTemplate.Views.PropertyToolbar.EDIT_BTN_CLICKED,this.OnEditBtnClicked);
-		
+		this.listenTo(this.m_PropertyToolbar,MailerTemplate.Views.PropertyToolbar.COPY_BTN_CLICKED,this.OnCopyBtnClicked);
+		this.listenTo(this.m_PropertyToolbar,MailerTemplate.Views.PropertyToolbar.DELETE_BTN_CLICKED,this.OnDeleteBtnClicked);
 		this.render();
 		
 		oDragNDrop = DragNDrop.getInstance();
@@ -41,8 +42,20 @@ MailerTemplate.Views.TemplateHolder = Backbone.View.extend({
 			type : $(currentElement).attr('type'),
 			model : model
 		}
-		//this.trigger(MailerTemplate.Views.TemplateHolder.BINDMODEL,model);	
 		this.trigger(MailerTemplate.Views.TemplateHolder.DISPLAY_PROPERTYPANEL, data);	
+	},
+	OnCopyBtnClicked : function(currentElement){
+		var model = this.m_lstModel[$(currentElement).attr("id")];
+		var copiedElement = $(currentElement).clone();
+		$(copiedElement).attr("id",$(copiedElement).attr('type')+(++this.m_objCnt));
+		$(copiedElement).insertAfter(currentElement);
+		newModel = model.CloneModel();
+		this.m_lstModel[$(copiedElement).attr("id")] = newModel;
+		this.m_CurrentTemplateViewObject = this.getTemplateObject($(copiedElement));
+		this.m_CurrentTemplateViewObject.setModel(newModel);
+	},
+	OnDeleteBtnClicked : function(currentElement){
+		
 	},
 	ApplySortingEvent : function(){
 		var temp = this;
@@ -99,6 +112,8 @@ MailerTemplate.Views.TemplateHolder = Backbone.View.extend({
 				$(droppedObject).remove();
 				newModel = new MailerTemplate.Models.Title();
 				this.m_lstModel[$(droppingObject).filter("div").attr("id")] = newModel;
+				this.m_CurrentTemplateViewObject = this.getTemplateObject($(droppingObject).filter("div"));
+				this.m_CurrentTemplateViewObject.setModel(newModel);
 			}
 		}
 		this.ApplyHoverEvent();

@@ -3,27 +3,29 @@ MailerTemplate.Views.TitlePanel = Backbone.View.extend({
 	m_propertyPanel : null,
 	m_Model : null,
 	bSupressChangeEvent : true,
-
+	m_styleTab : null,
+	
 	initialize : function(){
-		this.m_propertyPanel =  _.template($("#propertyStructure").html());
-		this.m_titleTemplate = _.template($("#titlePanelBody").html());
+		this.m_propertyPanel = $("#propertyPanel");
+		this.m_titleBody = $("#titleBody");
+		this.m_titleBody.show();
+		
+		this.m_styleTab = new MailerTemplate.Views.StyleTab({el : "#styletab"});
+		this.m_styleTab.setTemplateType(MailerTemplate.TemplateItems.TITLE);
+		this.listenTo(this.m_styleTab,MailerTemplate.Views.StyleTab.STYLE_PROPERTY_CHANGED,this.OnStylePropertyChanged);
 	},
+	
 	render : function(){
-		var templateData = {
-			title : "Text",
-			propertyBody : this.m_titleTemplate({})
-		}
-		this.$el.html(this.m_propertyPanel(templateData));
 		this.initCkEditor();
+		
 	},
 	show : function(){
 		//this.render();
+		
 		this.bSupressChangeEvent = false;
 	},
 	clear: function(){
-		//this.m_Model = null;	
 		this.bSupressChangeEvent = true;
-		//CKEDITOR.instances["titleText"].setData("");
 	},
 	hide: function(){
 		
@@ -46,9 +48,11 @@ MailerTemplate.Views.TitlePanel = Backbone.View.extend({
 	},
 	renderModel : function(model){
 		this.m_Model = model;
-		
 		CKEDITOR.instances["titleText"].setData(model.getTitle());
-		//CKEDITOR.dom.text(model.getTitle());
-		console.log(model.getTitle());
+		this.m_styleTab.setStyleProperty(model.getStyleProperty());
+	},
+	OnStylePropertyChanged : function(data){
+		this.m_Model.setStyleProperty(data);
+
 	}
 })
