@@ -55,7 +55,10 @@ MailerTemplate.Views.TemplateHolder = Backbone.View.extend({
 		this.m_CurrentTemplateViewObject.setModel(newModel);
 	},
 	OnDeleteBtnClicked : function(currentElement){
-		
+		var model = this.m_lstModel[$(currentElement).attr("id")];
+		var index = this.m_lstModel.indexOf(model);
+		this.m_lstModel.splice(index,1);
+		$(currentElement).remove();
 	},
 	ApplySortingEvent : function(){
 		var temp = this;

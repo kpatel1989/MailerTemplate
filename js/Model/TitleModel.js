@@ -4,13 +4,15 @@ MailerTemplate.Models.Title = Backbone.Model.extend({
 	
 	initialize : function(){
 		this.m_titleText = "Put your text here.";
+		this.setDefaultStyleProperties();
+	},
+	setDefaultStyleProperties : function(){
 		this.m_styleProperty = {};
 		var temp = this;
 		$.each(Object.keys($(MailerTemplate.StyleProperties)[0]), function(i,item) {
 			temp.m_styleProperty[item] = MailerTemplate.StyleProperties[item];
 		});
 	},
-	
 	setTitle : function(text){
 		this.m_titleText = text;
 		this.trigger(MailerTemplate.Models.Title.TEXT_CHANGE,this.m_titleText);
@@ -26,7 +28,14 @@ MailerTemplate.Models.Title = Backbone.Model.extend({
 		this.trigger(MailerTemplate.Models.Title.PROPERTY_CHANGE,data);
 	},
 	setStyleObject : function(styleObj){
-		this.m_styleProperty = styleObj;
+		this.setDefaultStyleProperties();
+		var obj = styleObj;
+		var temp = this;
+		$.each(Object.keys(styleObj),function(i,item){
+			temp.m_styleProperty[item] = obj[item];
+		});
+		
+		
 		this.trigger(MailerTemplate.Models.Title.STYLE_OBJ_CHANGE,this.m_styleProperty);
 	},
 	CloneModel : function(){
