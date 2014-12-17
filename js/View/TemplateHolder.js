@@ -36,13 +36,16 @@ MailerTemplate.Views.TemplateHolder = Backbone.View.extend({
 		this.m_currentEditableObject = currentElement;
 		
 		this.m_CurrentTemplateViewObject = this.getTemplateObject(currentElement);
-		var model = this.m_lstModel[$(this.m_currentEditableObject).attr("id")];
-		this.m_CurrentTemplateViewObject.setModel(model);
-		var data = {
-			type : $(currentElement).attr('type'),
-			model : model
+		if (this.m_CurrentTemplateViewObject)
+		{
+			var model = this.m_lstModel[$(this.m_currentEditableObject).attr("id")];
+			this.m_CurrentTemplateViewObject.setModel(model);
+			var data = {
+				type : $(currentElement).attr('type'),
+				model : model
+			}
+			this.trigger(MailerTemplate.Views.TemplateHolder.DISPLAY_PROPERTYPANEL, data);	
 		}
-		this.trigger(MailerTemplate.Views.TemplateHolder.DISPLAY_PROPERTYPANEL, data);	
 	},
 	OnCopyBtnClicked : function(currentElement){
 		var model = this.m_lstModel[$(currentElement).attr("id")];
@@ -52,7 +55,8 @@ MailerTemplate.Views.TemplateHolder = Backbone.View.extend({
 		newModel = model.CloneModel();
 		this.m_lstModel[$(copiedElement).attr("id")] = newModel;
 		this.m_CurrentTemplateViewObject = this.getTemplateObject($(copiedElement));
-		this.m_CurrentTemplateViewObject.setModel(newModel);
+		if (this.m_CurrentTemplateViewObject)
+			this.m_CurrentTemplateViewObject.setModel(newModel);
 	},
 	OnDeleteBtnClicked : function(currentElement){
 		var model = this.m_lstModel[$(currentElement).attr("id")];
@@ -116,7 +120,8 @@ MailerTemplate.Views.TemplateHolder = Backbone.View.extend({
 				newModel = new MailerTemplate.Models.Title();
 				this.m_lstModel[$(droppingObject).filter("div").attr("id")] = newModel;
 				this.m_CurrentTemplateViewObject = this.getTemplateObject($(droppingObject).filter("div"));
-				this.m_CurrentTemplateViewObject.setModel(newModel);
+				if (this.m_CurrentTemplateViewObject)
+					this.m_CurrentTemplateViewObject.setModel(newModel);
 			}
 		}
 		this.ApplyHoverEvent();
