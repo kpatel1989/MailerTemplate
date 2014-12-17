@@ -24,24 +24,24 @@ window.MailerTemplate = {
 	TemplateItems : {
 		TITLE : "title",
 		IMAGE : "images",
-		TEXTPLUSIMAGE : "textPlusImage",
+		/*TEXTPLUSIMAGE : "textPlusImage",
 		IMAGECARD : "ImageCard",
 		DIVIDER : "Divider",
 		GALLERY : "Gallery",
 		BUTTON : "Button",
 		VIDEO : "Video",
-		SOCIALLINKS : "SocialLinks"
+		SOCIALLINKS : "SocialLinks"*/
 	},
 	Templates : [ 
 			"title",
 			"images",
-			"TextPlusImage",
+			/*"TextPlusImage",
 			"ImageCard",
 			"Divider",
 			"Gallery",
 			"Button",
 			"Video",
-			"SocialLinks"
+			"SocialLinks"*/
 		 ],
 	DesignTemplate : [
 		"background",
