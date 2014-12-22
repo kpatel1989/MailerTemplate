@@ -23,7 +23,7 @@ window.MailerTemplate = {
 	Views : {},
 	TemplateItems : {
 		TITLE : "title",
-		IMAGE : "images",
+		IMAGE : "image",
 		/*TEXTPLUSIMAGE : "textPlusImage",
 		IMAGECARD : "ImageCard",
 		DIVIDER : "Divider",
@@ -34,7 +34,7 @@ window.MailerTemplate = {
 	},
 	Templates : [ 
 			"title",
-			"images",
+			"image",
 			/*"TextPlusImage",
 			"ImageCard",
 			"Divider",

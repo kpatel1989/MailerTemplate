@@ -4,6 +4,7 @@ MailerTemplate.Views.TitlePanel = Backbone.View.extend({
 	m_Model : null,
 	bSupressChangeEvent : true,
 	m_styleTab : null,
+	m_titleBody : null,
 	
 	initialize : function(){
 		this.m_propertyPanel = $("#propertyPanel");
@@ -17,18 +18,17 @@ MailerTemplate.Views.TitlePanel = Backbone.View.extend({
 	
 	render : function(){
 		this.initCkEditor();
-		
 	},
 	show : function(){
 		//this.render();
-		
+		this.m_titleBody.show();
 		this.bSupressChangeEvent = false;
 	},
 	clear: function(){
 		this.bSupressChangeEvent = true;
 	},
 	hide: function(){
-		
+		this.m_titleBody.hide();
 	},
 	initCkEditor : function(){
 		var temp = this;

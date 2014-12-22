@@ -24,11 +24,12 @@
 		<script src="js/MailerTemplate.js"></script>
 		
 		<script src="js/Model/TitleModel.js"></script>
-		
+		<script src="js/Model/ImageModel.js"></script>
 		
 		<script src="js/View/MainView.js"></script>
 		<script src="js/View/PropertyPanels/StyleTab.js"></script>
 		<script src="js/View/PropertyPanels/TitlePanel.js"></script>
+		<script src="js/View/PropertyPanels/ImagePanel.js"></script>
 		<script src="js/View/PropertiesPanel.js"></script>
 		<script src="js/View/DesignTemplateBody.js"></script>
 		<script src="js/View/DesignTemplateFooter.js"></script>
@@ -36,6 +37,7 @@
 		<script src="js/View/DesignTemplatePageHeader.js"></script>
 		<script src="js/View/TemplateItems.js"></script>
 		<script src="js/View/TemplateElements/TitleElement.js"></script>
+		<script src="js/View/TemplateElements/ImageElement.js"></script>
 		<script src="js/View/TemplateHolder.js"></script>
 		<script src="js/View/PropertyToolbar.js"></script>
 		<script src="js/DragNDrop.js"></script>
@@ -48,7 +50,7 @@
 		</li>
 		</script>
 		
-		<script type="text/template" id="images">
+		<script type="text/template" id="image">
         <li id="imageTemplateItem" class="draggable ui-state-default" type="images">
             <a href="javascript:void(0)" class ="grow">
 					<img src="images/img_Image.png" class="img-rounded" alt = ""/>
@@ -105,11 +107,12 @@
 		</script>
 
 
-		<script type="text/template" id="imageDroppedItem">
+		<script type="text/template" id="imagesDroppedItem">
 			<div id="titleTemplateItem0" class="imageDroppedItem droppedObject ui-state-default" type="image"> 
-				<center> 
-					<img src='../MailerTemplate/images/img_Image.png' /> 
-				</center> 
+				<div>
+					<img class="" src="images/empty_image-72.png">
+					<div id="previewBlock"><button type="button" class="btn btn-default">Browse an Image</button></div>
+				</div>
 			</div>
 		</script>
 
@@ -246,6 +249,15 @@
 						  	<div id="titleBody">
 								<textarea name="titleText" id="titleText"> </textarea>
 								<input type="button" value="Save and exit" id="saveProperties"/> 
+							</div>
+							<div id="imageBody">
+								<div><button type="button" class="btn btn-default">Browse an Image</button></div>
+								<img id="imagePreview" class="" src="">
+								<div class="">
+									<strong class="" data-image-title="">cart-small-orange-icon.png</strong>
+									<div class=""></div>
+										<div class="small-meta">21 × 17</div>
+								</div>
 							</div>
 					  	</div>
 						<div role="tabpanel" class="tab-pane" id="styletab">

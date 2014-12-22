@@ -81,7 +81,7 @@ MailerTemplate.Views.PropertyToolbar = Backbone.View.extend({
 			return;
 		this.$el.css({"left": (x-10),
 					  "top":(y-10),
-					  "height":(h+20),
+					  "height":(h+10),
 					  "width":(w+20)
 					 });
 		this.m_hoveredElement = hoverObject;

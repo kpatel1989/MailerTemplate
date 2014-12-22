@@ -49,14 +49,19 @@ MailerTemplate.Views.TemplateHolder = Backbone.View.extend({
 	},
 	OnCopyBtnClicked : function(currentElement){
 		var model = this.m_lstModel[$(currentElement).attr("id")];
+		
 		var copiedElement = $(currentElement).clone();
 		$(copiedElement).attr("id",$(copiedElement).attr('type')+(++this.m_objCnt));
 		$(copiedElement).insertAfter(currentElement);
+		
 		newModel = model.CloneModel();
 		this.m_lstModel[$(copiedElement).attr("id")] = newModel;
+		
 		this.m_CurrentTemplateViewObject = this.getTemplateObject($(copiedElement));
 		if (this.m_CurrentTemplateViewObject)
 			this.m_CurrentTemplateViewObject.setModel(newModel);
+		
+		this.ApplyHoverEvent();
 	},
 	OnDeleteBtnClicked : function(currentElement){
 		var model = this.m_lstModel[$(currentElement).attr("id")];
@@ -117,11 +122,16 @@ MailerTemplate.Views.TemplateHolder = Backbone.View.extend({
 				$(droppingObject).attr("id",$(droppedObject).attr('type')+(++this.m_objCnt));
 				$(droppingObject).insertAfter(droppedObject);
 				$(droppedObject).remove();
-				newModel = new MailerTemplate.Models.Title();
-				this.m_lstModel[$(droppingObject).filter("div").attr("id")] = newModel;
+				
 				this.m_CurrentTemplateViewObject = this.getTemplateObject($(droppingObject).filter("div"));
+				newModel = this.getTemplateModel($(droppingObject).filter("div"));
+				
 				if (this.m_CurrentTemplateViewObject)
+				{
+					this.m_lstModel[$(droppingObject).filter("div").attr("id")] = newModel;
 					this.m_CurrentTemplateViewObject.setModel(newModel);
+				}
+					
 			}
 		}
 		this.ApplyHoverEvent();
@@ -140,10 +150,28 @@ MailerTemplate.Views.TemplateHolder = Backbone.View.extend({
 			
 		}
 	},
+	getTemplateModel : function(object){
+		var type = $(object).attr('type');
+		switch (type)
+		{
+			case MailerTemplate.TemplateItems.TITLE:
+				return new MailerTemplate.Models.Title();
+				break;
+			case MailerTemplate.TemplateItems.IMAGE:
+				return new MailerTemplate.Models.Image();
+				break;
+		}
+	},
 	getTemplateObject : function(object){
 		var type = $(object).attr('type');
-		if (type==MailerTemplate.TemplateItems.TITLE){
-			return new MailerTemplate.Views.Title({el : "#"+$(object).attr("id")});
+		switch (type)
+		{
+			case MailerTemplate.TemplateItems.TITLE:
+				return new MailerTemplate.Views.Title({el : "#"+$(object).attr("id")});
+				break;
+			case MailerTemplate.TemplateItems.IMAGE:
+				return new MailerTemplate.Views.Image({el : "#"+$(object).attr("id")});
+				break;
 		}
 	}
 });
