@@ -36,11 +36,11 @@ MailerTemplate.Views.Image = Backbone.View.extend({
 			var value = data[item];
 			if (prop == "imageAlign")
 			{
-				this.m_ImageElement.attr("align",value);	
+				temp.m_ImageElement.attr("align",value);	
 			}
 			else
 			{
-				this.m_ImageElement.css(prop , value);
+				temp.m_ImageElement.css(prop , value);
 			}
 		});
 	},
