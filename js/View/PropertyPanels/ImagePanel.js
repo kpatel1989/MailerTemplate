@@ -15,8 +15,8 @@ MailerTemplate.Views.ImagePanel = Backbone.View.extend({
 		this.m_ImageUploadBtn = $("#imageUploadBtn");
 		
 		this.m_styleTab = new MailerTemplate.Views.StyleTab({el : "#styletab"});
-		this.m_styleTab.setTemplateType(MailerTemplate.TemplateItems.TITLE);
-		this.listenTo(this.m_styleTab,MailerTemplate.Views.StyleTab.STYLE_PROPERTY_CHANGED,this.OnStylePropertyChanged);
+		this.m_styleTab.setTemplateType(MailerTemplate.TemplateItems.IMAGE);
+		
 	},
 	events : {
 		"load #imagePreview" : "OnImageLoaded",
@@ -39,11 +39,13 @@ MailerTemplate.Views.ImagePanel = Backbone.View.extend({
 	},
 	show : function(){
 		this.m_ImageBody.show();
+		this.listenTo(this.m_styleTab,MailerTemplate.Views.StyleTab.STYLE_PROPERTY_CHANGED,this.OnStylePropertyChanged);
 	},
 	clear: function(){
 	},
 	hide: function(){
 		this.m_ImageBody.hide();
+		this.stopListening(this.m_styleTab);
 	},
 	renderModel : function(model){
 		this.m_Model = model;

@@ -262,10 +262,10 @@
 							<input type="button" value="Save and exit" id="saveProperties"/> 
 					  	</div>
 						<div role="tabpanel" class="tab-pane" id="styletab">
-							<div class="styleHeader">
+							<div class="styleHeader" id="StyleTypeHeader">
 								Type
 							</div>
-							<div>
+							<div id="styleType">
 								<div id="textColorParent">
 									<div> Text Color </div>
 									<div style="width:150px">
@@ -304,8 +304,8 @@
 										<div data-value="1">Not Specified</div>
 										<div data-value="2">Normal</div>
 										<div data-value="3">Slight</div>
-										<div data-value="2">1 1/2 spacing</div>
-										<div data-value="3">Double Space</div>
+										<div data-value="4">1 1/2 spacing</div>
+										<div data-value="5">Double Space</div>
 									</div>
 								</div>
 								<div id="textAlignParent">
@@ -327,6 +327,27 @@
 											<input type="radio" name="options" id="textAlignJustified" autocomplete="off" checked alignType="justified">
 											<span class="glyphicon glyphicon-align-justify" aria-hidden="true"></span>
 										</label>
+									</div>
+								</div>
+							</div>
+							<div class="styleHeader" id="ImageSettingsHeader">
+								Image Settings
+							</div>
+							<div id="ImageSettings">
+								<div id="imageAlignParent">
+									<div>Align</div>
+									<div class="bfh-selectbox" data-name="selectbox1" id="imageAlignment">
+										<div data-value="left">Left</div>
+										<div data-value="center">Center</div>
+										<div data-value="right">Right</div>
+									</div>
+								</div>
+								<div id="imageMarginParent">
+									<div>Margin</div>
+									<div class="checkbox">
+									  <label>
+										<input type="checkbox" value="" id="imageMargin"> Edge to Edge
+									  </label>
 									</div>
 								</div>
 							</div>

@@ -13,7 +13,6 @@ MailerTemplate.Views.TitlePanel = Backbone.View.extend({
 		
 		this.m_styleTab = new MailerTemplate.Views.StyleTab({el : "#styletab"});
 		this.m_styleTab.setTemplateType(MailerTemplate.TemplateItems.TITLE);
-		this.listenTo(this.m_styleTab,MailerTemplate.Views.StyleTab.STYLE_PROPERTY_CHANGED,this.OnStylePropertyChanged);
 	},
 	
 	render : function(){
@@ -22,6 +21,7 @@ MailerTemplate.Views.TitlePanel = Backbone.View.extend({
 	show : function(){
 		//this.render();
 		this.m_titleBody.show();
+		this.listenTo(this.m_styleTab,MailerTemplate.Views.StyleTab.STYLE_PROPERTY_CHANGED,this.OnStylePropertyChanged);
 		this.bSupressChangeEvent = false;
 	},
 	clear: function(){
@@ -29,6 +29,7 @@ MailerTemplate.Views.TitlePanel = Backbone.View.extend({
 	},
 	hide: function(){
 		this.m_titleBody.hide();
+		this.stopListening(this.m_styleTab);
 	},
 	initCkEditor : function(){
 		var temp = this;

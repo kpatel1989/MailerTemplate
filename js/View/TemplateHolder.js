@@ -94,10 +94,7 @@ MailerTemplate.Views.TemplateHolder = Backbone.View.extend({
 	
 	OnHoverIn : function(obj){
 		this.currentHoverElement = obj;
-		this.m_PropertyToolbar.show($(obj).position().left,
-									$(obj).position().top,
-								   	$(obj).height(),
-								   	$(obj).width(),obj);
+		this.m_PropertyToolbar.show(obj);
 	},
 	render : function(){
 		

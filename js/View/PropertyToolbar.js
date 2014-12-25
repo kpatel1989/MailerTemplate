@@ -76,13 +76,18 @@ MailerTemplate.Views.PropertyToolbar = Backbone.View.extend({
 		
 	},
 	
-	show : function(x,y,h,w,hoverObject){
+	show : function(hoverObject){
 		if (this.m_hideOnDragg)
 			return;
-		this.$el.css({"left": (x-10),
-					  "top":(y-10),
-					  "height":(h+10),
-					  "width":(w+20)
+		this.$el.css({"left": (($(hoverObject).position().left)/2),
+					  "top":($(hoverObject).position().top -
+							    parseInt($(hoverObject).css("padding-top"))),
+					  "height":($(hoverObject).height() +10 +
+								parseInt($(hoverObject).css("padding-top")) +
+							    parseInt($(hoverObject).css("padding-bottom"))),
+					  "width":($(hoverObject).width() - (($(hoverObject).position().left)/2) +
+								parseInt($(hoverObject).css("padding-left")) +
+							    parseInt($(hoverObject).css("padding-right")))
 					 });
 		this.m_hoveredElement = hoverObject;
 		this.$el.show();

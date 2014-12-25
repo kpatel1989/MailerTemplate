@@ -60,7 +60,10 @@ window.MailerTemplate = {
 		fontSize : "16px",
 		fontWeight : "initial",
 		lineHeight : "initial",
-		textAlign : "center"
+		textAlign : "center",
+		imageAlign : "center",
+		imageMargin : "0px",
+		imagePadding : "10px",
 	},
 	CssStyleConnector : {
 		fontColor : "color",
@@ -68,6 +71,9 @@ window.MailerTemplate = {
 		fontSize : "font-size",
 		fontWeight : "font-weight",
 		lineHeight : "line-height",
-		textAlign : "text-align"
+		textAlign : "text-align",
+		imageAlign : "align",
+		imageMargin : "margin",
+		imagePadding : "padding"
 	}
 }
