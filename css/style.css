@@ -45,7 +45,7 @@ div#hScroller {
     top: 31px;
     left: 51px;
     height: 80px;
-    min-width: 526px;
+    /* min-width: 526px; */
     border: 3px solid rgba(92, 92, 92, 0.7);
     display: none;
 }
