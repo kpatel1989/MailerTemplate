@@ -5,22 +5,34 @@ MailerTemplate.Views.ImagePanel = Backbone.View.extend({
 	m_styleTab : null,
 	m_ImageBody : null,
 	m_ImagePreview : null,
+	m_ImageUploadBtn : null,
 	
 	initialize : function(){
 		this.m_propertyPanel = $("#propertyPanel");
 		this.m_ImageBody = $("#imageBody");
 		this.m_ImageBody.show();
 		this.m_ImagePreview = $("#imagePreview");
-
+		this.m_ImageUploadBtn = $("#imageUploadBtn");
+		
 		this.m_styleTab = new MailerTemplate.Views.StyleTab({el : "#styletab"});
 		this.m_styleTab.setTemplateType(MailerTemplate.TemplateItems.TITLE);
 		this.listenTo(this.m_styleTab,MailerTemplate.Views.StyleTab.STYLE_PROPERTY_CHANGED,this.OnStylePropertyChanged);
 	},
 	events : {
-		"load #imagePreview" : "OnImageLoaded"	
+		"load #imagePreview" : "OnImageLoaded",
+		"change #imageUploadBtn" : "ImageFileSelected"
 	},
-	OnImageLoaded : function(){
-		console.log("image loaded in panel");	
+	OnImageLoaded : function(evt,obj){
+		obj.m_ImagePreview[0].src = evt.target.result;
+		obj.m_Model.setSource(evt.target.result);
+	},
+	ImageFileSelected : function(evt){
+		if (evt.target.files && evt.target.files[0]) {
+			var reader = new FileReader();
+			var temp = this;
+			reader.onload = function(evt){temp.OnImageLoaded(evt,temp)};
+			reader.readAsDataURL(evt.target.files[0]);
+		}
 	},
 	render : function(){
 		
@@ -35,7 +47,7 @@ MailerTemplate.Views.ImagePanel = Backbone.View.extend({
 	},
 	renderModel : function(model){
 		this.m_Model = model;
-		this.m_ImagePreview.src = model.getSource();
+		this.m_ImagePreview[0].src = model.getSource();
 		this.m_styleTab.setStyleProperty(model.getStyleProperty());
 	},
 	OnStylePropertyChanged : function(data){

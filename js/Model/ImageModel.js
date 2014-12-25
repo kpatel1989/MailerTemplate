@@ -3,11 +3,11 @@ MailerTemplate.Models.Image = Backbone.Model.extend({
 	m_styleProperty : null,
 	
 	initialize : function(){
-		this.m_ImageSource = "images/img_Image.png";
+		this.m_ImageSource = "images/empty_image-72.png";
 		this.setDefaultStyleProperties();
 	},
-	setSource : function(text){
-		this.m_ImageSource = text;
+	setSource : function(source){
+		this.m_ImageSource = source;
 		this.trigger(MailerTemplate.Models.Image.IMAGE_CHANGE,this.m_ImageSource);
 	},
 	getSource : function(){

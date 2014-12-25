@@ -17,7 +17,7 @@ MailerTemplate.Views.Image = Backbone.View.extend({
 	
 	setSource : function(source){
 		this.m_ImageSource = source;
-		this.m_ImageElement.src = source;
+		this.m_ImageElement[0].src = source;
 		$(this.m_previewBlock).hide();
 	},
 	setModel : function(model){

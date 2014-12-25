@@ -114,6 +114,7 @@ ul.sidebar-nav
 	padding: 0;
 	
 	min-height: 34px;
+	max-width: 100%;
 }
 
 div#DividerTemplateItem3 {
@@ -218,4 +219,13 @@ p {
 button[type="file"] {
     z-index: 99999999;
     cursor: pointer;
+}
+
+img#imagePreview {
+    max-width: 150px;
+}
+
+.droppedObject img {
+    max-width: 100%;
+    padding: 10px;
 }
