@@ -20,6 +20,7 @@
 		<script src="js/lib/handlebars-v1.3.0.js"></script>
 		<script src="bootstrap/js/bootstrap.min.js"></script>
 		<script src="js/lib/formpicker/js/bootstrap-formhelpers.min.js"></script>
+		<script src="js/bussinesslogic/JsonGenerator.js"></script>
 		
 		<script src="js/MailerTemplate.js"></script>
 		
@@ -368,7 +369,7 @@
 						<div>
                         <h1><center>Mail Editor</center></h1>
 							<div style="position:absolute;top:0px;right:0px">
-								<a href="#" class="btn btn-primary btn-success">Save Template</a>
+								<a href="#" class="btn btn-primary btn-success" id="saveTempalate">Save Template</a>
 							</div>
 						</div>
                         <div class="">
@@ -390,13 +391,12 @@
 									<div id="propertyToolbar">
 										<div id="toolbarItemsWrapper">
 											<div class="moveable">
-												<div id = "move" class ="ui-state-default">Move</div> 
+												<a id="move" href="#" class="btn btn-primary btn-primary"><span class="glyphicon glyphicon-move"></span> </a>
 											</div>
-											<div id = "edit">Edit</div>
-											<div id = "copy">Copy</div>
-											<div id = "delete">Delete</div>
-										</div>
-										<!-- to be done by manan -->								
+											<a id = "edit" href="#" class="btn btn-primary btn-default"><span class="glyphicon glyphicon-pencil"></span> </a>
+											<a id = "copy" href="#" class="btn btn-primary btn-default"><span class="glyphicon glyphicon-copy"></span> </a>
+											<a id="delete" href="#" class="btn btn-primary btn-default"><span class="glyphicon glyphicon-trash"></span> </a>
+										</div>							
 									</div>
 								</div>
 							</div>

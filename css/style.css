@@ -228,3 +228,8 @@ img#imagePreview {
 .droppedObject img {
     max-width: 100%;
 }
+
+.glyphicon-copy:before {
+    content: '\2750';
+    font-size: 17px;
+}

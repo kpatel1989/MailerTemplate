@@ -7,8 +7,12 @@ MailerTemplate.Views.MainView = Backbone.View.extend({
 	m_DesignPageHeader : null,
 	m_DesignPageBody : null,
 	m_DesignPageFooter : null,
+	m_saveTemplate : null,
+	m_jsonGenerator : null,
 	
 	initialize : function(expenses){
+		this.m_jsonGenerator = new JsonGenerator();
+		
 		this.m_TemplateItems = new MailerTemplate.Views.TemplateItems({el : "#templateItems"});
 		this.m_Editor = new MailerTemplate.Views.TemplateHolder({el : "#templateHolder"});
 		this.listenTo(this.m_Editor,MailerTemplate.Views.TemplateHolder.DISPLAY_PROPERTYPANEL,this.ShowProptertyPanel);
@@ -16,13 +20,20 @@ MailerTemplate.Views.MainView = Backbone.View.extend({
 		
 		this.m_PropertyPanel = new MailerTemplate.Views.PropertyPanel({el : "#propertyPanel"});
 		
+		this.m_saveTemplate = $("#saveTempalate");
 		
 //		this.m_DesignTab = new MailerTemplate.Views.DesignTemplatePage({el : "#DesignPageDiv"}); 
 //		this.m_DesignPageHeader = new MailerTemplate.Views.DesignTemplatePageHeader({el : "#DesignPageDiv"}); 
 //		this.m_DesignPageBody = new MailerTemplate.Views.DesignTemplateBody({el : "#DesignPageDiv"}); 
 //		this.m_DesignPageFooter = new MailerTemplate.Views.DesignTemplateFooter({el : "#DesignPageDiv"}); 
 	},
-	
+	events : {
+		"click #saveTempalate" : "OnSaveBtnClick"
+	},
+	OnSaveBtnClick : function(evt){
+		var modelData = this.m_Editor.generatePlainHtml();
+		this.m_jsonGenerator.GenerateJson(modelData);
+	},
 	ShowProptertyPanel: function(data){
 		this.m_PropertyPanel.clear();
 		this.m_PropertyPanel.show(data.type,data.model);

@@ -170,6 +170,13 @@ MailerTemplate.Views.TemplateHolder = Backbone.View.extend({
 				return new MailerTemplate.Views.Image({el : "#"+$(object).attr("id")});
 				break;
 		}
+	},
+	generatePlainHtml : function(){
+		var headerItemIds = $( "#template_holder_header" ).sortable("toArray");
+		var bodyItemIds = $( "#template_holder_body" ).sortable("toArray");
+		var footerItemIds = $( "#template_holder_footer" ).sortable("toArray");
+		return { "ids" : headerItemIds.concat(bodyItemIds.concat(footerItemIds)),
+				 "models" : this.m_lstModel};
 	}
 });
 MailerTemplate.Views.TemplateHolder.DISPLAY_PROPERTYPANEL = "displayPropertyPanel";

@@ -21,6 +21,7 @@ window.MailerTemplate = {
 	Models : {},
 	Collections : {},
 	Views : {},
+	Lib :{},
 	TemplateItems : {
 		TITLE : "title",
 		IMAGE : "image",
