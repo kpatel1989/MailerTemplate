@@ -9,8 +9,12 @@ JsonGenerator.prototype = {
 			return null;
 		var lstModels = modelData.models;
 		var ids = modelData.ids;
+		var jsonOutput = {};
+		var templateItems = {};
 		$.each(ids,function(i,item){
-			console.log(lstModels[item].toJSON());
+			templateItems[i+1] =lstModels[item].toJSON(); 
 		});
+		jsonOutput.templateItems = templateItems;
+		console.log(jsonOutput);
 	}
 }

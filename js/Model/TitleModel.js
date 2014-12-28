@@ -5,6 +5,7 @@ MailerTemplate.Models.Title = Backbone.Model.extend({
 	initialize : function(){
 		this.setTitle("Put your text here.");
 		this.setDefaultStyleProperties();
+		this.set({type:MailerTemplate.TemplateItems.TITLE});
 	},
 	setDefaultStyleProperties : function(){
 		this.m_styleProperty = {};
