@@ -3,6 +3,11 @@
 }
 
 JsonGenerator.prototype = {
+	pageSettings : null,
+	
+	SetPageSettings : function(pageStyle){
+		this.pageSettings = pageStyle;	
+	},
 	
 	GenerateJson : function(modelData){
 		if (!modelData.ids || !modelData.models)
@@ -15,6 +20,8 @@ JsonGenerator.prototype = {
 			templateItems[i+1] =lstModels[item].toJSON(); 
 		});
 		jsonOutput.templateItems = templateItems;
-		console.log(jsonOutput);
+		jsonOutput.pageStyles = this.pageSettings;
+		console.log(JSON.stringify(jsonOutput));
+		return jsonOutput;
 	}
 }
