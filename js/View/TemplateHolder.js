@@ -10,6 +10,7 @@ MailerTemplate.Views.TemplateHolder = Backbone.View.extend({
 	m_currentEditableObject : null,
 	m_CurrentTemplateViewObject : null,
 	m_lstModel : [],
+	dragNDropHandler : null,
 	
 	initialize : function(){
 		
@@ -18,6 +19,7 @@ MailerTemplate.Views.TemplateHolder = Backbone.View.extend({
 		this.m_TemplateHoderHeader = $("#template_holder_header");
 		this.m_TemplateHoderFooter = $("#template_holder_footer");
 		
+		this.dragNDropHandler = new DragNDrop({dragSelector : ".draggable", dropSelector : ".droppable"});
 		this.ApplySortingEvent();
 		this.m_PropertyToolbar = new MailerTemplate.Views.PropertyToolbar({el : "#propertyToolbar"});
 		this.listenTo(this.m_PropertyToolbar,MailerTemplate.Views.PropertyToolbar.EDIT_BTN_CLICKED,this.OnEditBtnClicked);
@@ -175,7 +177,8 @@ MailerTemplate.Views.TemplateHolder = Backbone.View.extend({
 		var headerItemIds = $( "#template_holder_header" ).sortable("toArray");
 		var bodyItemIds = $( "#template_holder_body" ).sortable("toArray");
 		var footerItemIds = $( "#template_holder_footer" ).sortable("toArray");
-		return { "ids" : headerItemIds.concat(bodyItemIds.concat(footerItemIds)),
+		var ids = {"header" : headerItemIds, "body" : bodyItemIds, "footer":footerItemIds};
+		return { "ids" : ids,
 				 "models" : this.m_lstModel};
 	}
 });

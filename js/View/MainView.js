@@ -32,7 +32,9 @@ MailerTemplate.Views.MainView = Backbone.View.extend({
 	},
 	OnSaveBtnClick : function(evt){
 		var modelData = this.m_Editor.generatePlainHtml();
-		this.m_jsonGenerator.GenerateJson(modelData);
+		var jsonData = this.m_jsonGenerator.GenerateJson(modelData);
+		window.jsonObject = jsonData;
+		window.open("TemplatePreview.html","_blank");
 	},
 	ShowProptertyPanel: function(data){
 		this.m_PropertyPanel.clear();
