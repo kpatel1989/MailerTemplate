@@ -46,6 +46,10 @@ MailerTemplate.Models.Title = Backbone.Model.extend({
 		newModel.setTitle(this.m_titleText);
 		newModel.setStyleObject(this.m_styleProperty);
 		return newModel;
+	},
+	fromJson : function(json){
+		this.setTitle(json.title);
+		this.setStyleObject(json.style);
 	}
 });
 

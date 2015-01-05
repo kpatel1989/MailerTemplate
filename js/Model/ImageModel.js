@@ -46,6 +46,10 @@ MailerTemplate.Models.Image = Backbone.Model.extend({
 		newModel.setSource(this.m_ImageSource);
 		newModel.setStyleObject(this.m_styleProperty);
 		return newModel;
+	},
+	fromJson : function(json){
+		this.setSource(json.source);
+		this.setStyleObject(json.style);
 	}
 });
 MailerTemplate.Models.Image.IMAGE_CHANGE = "imageChange";

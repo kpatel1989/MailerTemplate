@@ -36,6 +36,7 @@ HtmlGenerator.prototype = {
 			$(parentElement).append(element);
 			$(element).prop("id","template"+(temp.m_Index++));
 			var model = temp.getTemplateModel(item.type);
+			model.fromJson(item);
 			var elementView = temp.getTemplateObject(item.type,$(element).attr("id"));
 			elementView.setModel(model);
 		});
