@@ -174,9 +174,10 @@ MailerTemplate.Views.TemplateHolder = Backbone.View.extend({
 		}
 	},
 	generatePlainHtml : function(){
-		var headerItemIds = $( "#template_holder_header" ).sortable("toArray");
-		var bodyItemIds = $( "#template_holder_body" ).sortable("toArray");
-		var footerItemIds = $( "#template_holder_footer" ).sortable("toArray");
+		var headerItemIds = $.map($( "#template_holder_header > .droppedObject" ),function(item){return $(item).attr("id"); } );
+		var bodyItemIds = $.map($( "#template_holder_body > .droppedObject" ),function(item){return $(item).attr("id"); } );
+		var footerItemIds = $.map($( "#template_holder_footer > .droppedObject" ),function(item){return $(item).attr("id"); } );
+		
 		var ids = {"header" : headerItemIds, "body" : bodyItemIds, "footer":footerItemIds};
 		return { "ids" : ids,
 				 "models" : this.m_lstModel};
