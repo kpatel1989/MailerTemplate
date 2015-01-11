@@ -111,10 +111,12 @@
 
 		<script type="text/template" id="imagesDroppedItem">
 			<div id="titleTemplateItem0" class="imageDroppedItem droppedObject ui-state-default" type="image"> 
-				<div>
-					<img class="" src="images/empty_image-72.png">
-					<div id="previewBlock"><button type="button" class="btn btn-default">Browse an Image</button></div>
-				</div>
+				<a id="imageLink" href="#" target="_blank">
+					<div> 
+						<img class="" src="images/empty_image-72.png">
+						<div id="previewBlock"><button type="button" class="btn btn-default">Browse an Image</button></div>
+					</div>
+				</a>
 			</div>
 		</script>
 
@@ -253,13 +255,17 @@
 								
 							</div>
 							<div id="imageBody">
-								<div><input type="file" class="btn btn-default" id="imageUploadBtn" value="Browse an Image"></div>
+								
+								<input id="input-700" type="file" class="file-loading" id="imageUploadBtn">
 								<img id="imagePreview" class="imagePreview" src="">
 								<div class="">
 									<strong class="" data-image-title="" id ="imageName">default.png</strong>
-									<div class=""></div>
 									<div class="small-meta" id="imageSize"></div>
-									<div id="link"> </div>
+									<div class="imageAlt selfclear pad-lv2 pad-lr0">
+										<label for="">Image Link</label>
+										<input type="text" class="float-left altTextInput" style="width:50%;" id="txtImageLink" value="">
+										<a href="#" class="btn btn-primary btn-primary" id="updateImageLinkBtn">Update</a>
+									</div>
 								</div>
 							</div>
 							
