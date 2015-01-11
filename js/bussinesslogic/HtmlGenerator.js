@@ -72,12 +72,16 @@ HtmlGenerator.prototype = {
 $(document).ready(function(){
 	if (window.opener)
 	{
-		var template = _.template($("#templatePreview").html());
-		$(document.body).append($.parseHTML(template()));
-		header = $("#template_holder_header");
-		body = $("#template_holder_body");
-		footer = $("#template_holder_footer");
-		var htmlGenerator = new HtmlGenerator(window.opener.jsonObject,header,body,footer);
-		htmlGenerator.parseJSON();
+		$("#templates").load("HBTemplate.html",OnTemplatesLoaded);
 	}
 });
+function OnTemplatesLoaded()
+{
+	var template = _.template($("#templatePreview").html());
+	$(document.body).append($.parseHTML(template()));
+	header = $("#template_holder_header");
+	body = $("#template_holder_body");
+	footer = $("#template_holder_footer");
+	var htmlGenerator = new HtmlGenerator(window.opener.jsonObject,header,body,footer);
+	htmlGenerator.parseJSON();
+}
