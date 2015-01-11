@@ -233,3 +233,7 @@ img#imagePreview {
     content: '\2750';
     font-size: 17px;
 }
+
+div#propertyBody > div {
+    display: none;
+}

@@ -256,12 +256,13 @@
 								<div><input type="file" class="btn btn-default" id="imageUploadBtn" value="Browse an Image"></div>
 								<img id="imagePreview" class="imagePreview" src="">
 								<div class="">
-									<strong class="" data-image-title="">cart-small-orange-icon.png</strong>
+									<strong class="" data-image-title="" id ="imageName">default.png</strong>
 									<div class=""></div>
-										<div class="small-meta">21 × 17</div>
+									<div class="small-meta" id="imageSize"></div>
+									<div id="link"> </div>
 								</div>
 							</div>
-							<input type="button" value="Save and exit" id="saveProperties"/> 
+							
 					  	</div>
 						<div role="tabpanel" class="tab-pane" id="styletab">
 							<div class="styleHeader" id="StyleTypeHeader">
@@ -355,7 +356,9 @@
 							</div>
 						</div>
 						<div role="tabpanel" class="tab-pane" id="settingsTab">settings</div>
-					  </div>
+						<input type="button" value="Save and exit" id="saveProperties"/> 
+					</div>
+						
 					</div>
 				</div>
 			</div>

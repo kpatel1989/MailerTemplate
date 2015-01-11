@@ -15,7 +15,7 @@ MailerTemplate.Views.ImagePanel = Backbone.View.extend({
 		this.m_ImageUploadBtn = $("#imageUploadBtn");
 		
 		this.m_styleTab = new MailerTemplate.Views.StyleTab({el : "#styletab"});
-		
+		this.hide();
 		
 	},
 	events : {
