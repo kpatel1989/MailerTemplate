@@ -23,11 +23,11 @@ HtmlGenerator.prototype = {
 		var footer = templateItems.footer;
 		
 
-		this.AppendHeader(header,this.m_Header);
-		this.AppendHeader(body,this.m_Body);
-		this.AppendHeader(footer,this.m_Footer);
+		this.AppendTemplate(header,this.m_Header);
+		this.AppendTemplate(body,this.m_Body);
+		this.AppendTemplate(footer,this.m_Footer);
 	},
-	AppendHeader : function(jsonObject, parentElement){
+	AppendTemplate : function(jsonObject, parentElement){
 		var temp = this;
 		
 		$.each(jsonObject,function(i,item){
