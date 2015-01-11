@@ -47,13 +47,24 @@ MailerTemplate.Views.MainView = Backbone.View.extend({
 		$.ajax({
 			url : "TemplateSample.json",
 			type: 'get',
-			data : 'json',
+			data : 'text',
 			success : function(data) { temp.LoadTemplate(data); },
 			error : this.OnError
 		});
 	},
 	LoadTemplate : function(data){
-		this.m_Editor.LoadJson(data);
+		try{
+			if(typeof data == 'string')
+			{
+				data = JSON.parse(data);
+			}
+			this.m_Editor.LoadJson(data);
+		}
+		catch(e)
+		{
+			console.log("Json parse Error")
+		}
+		
 	},
 	OnError : function(){
 		console.log("Error loading template");
