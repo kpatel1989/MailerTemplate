@@ -272,5 +272,6 @@ div#propertyBody > div {
 
 
 input[type=file] {
-    width: 125px;  height: 30px;  margin: 0 auto 10px;
+    width: 124px;  
+    height: 30px;  margin: 0 auto 10px;    height : 35px;    overflow:hidden;    line-height:23px;
 }
