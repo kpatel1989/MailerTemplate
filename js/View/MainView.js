@@ -33,14 +33,29 @@ MailerTemplate.Views.MainView = Backbone.View.extend({
 		"click #saveTempalate" : "OnSaveBtnClick",
 		"click #loadTemplate" : "OnLoadTemplateBtnClick"
 	},
+	openModal: function() {
+        var view = new MailerTemplate.Views.ModalView();
+		view.setHtml("Do you sure you want to save this template ?")
+		this.listenTo(view,MailerTemplate.Views.ModalView.OkClicked, this.onModalOkClicked);
+        var modal = new Backbone.BootstrapModal({
+            content: view,
+            title: 'Save',
+            animate: true
+        });
+        modal.open(function(){ console.log('clicked OK') });
+    },
+	onModalOkClicked : function(){
+		window.open("TemplatePreview.html","_blank");
+	},
 	OnSaveBtnClick : function(evt){
 		var modelData = this.m_Editor.generatePlainHtml();
 		var jsonData = this.m_jsonGenerator.GenerateJson(modelData);
 		var jsonString = JSON.stringify(jsonData);
 		console.log(jsonString);
 		// save this jsonString
+		this.openModal();
 		window.jsonObject = jsonData;
-		window.open("TemplatePreview.html","_blank");
+		//window.open("TemplatePreview.html","_blank");
 	},
 	OnLoadTemplateBtnClick : function(){
 		var temp = this;
