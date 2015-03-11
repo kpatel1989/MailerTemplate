@@ -9,3 +9,7 @@ To a new Element to Mailer Template
 	7. Add TEmplateItemElement and TemplateITemModel case in Templateholder.js
 	6. Add Style Properties in html
 	7. Add objects in styleTab.js
+	8. Add objects to backbone json. format.
+	9. Add script tags to preview page. 
+	10. set css.
+	done.
