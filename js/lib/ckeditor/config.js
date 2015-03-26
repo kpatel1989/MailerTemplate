@@ -26,8 +26,8 @@ CKEDITOR.editorConfig = function( config ) {
 //		{ name: 'colors', items: [ 'TextColor', 'BGColor' ] },
 //		{ name: 'tools', items: [ 'Maximize', 'ShowBlocks' ] },
 //		{ name: 'others', items: [ '-' ] },
-//		{ name: 'about', items: [ 'About' ] }
-		{ name: 'insert', items: [ 'unsubscribe' ] },
+		{ name: 'insert2', items: [ 'Smiley' ] },
+		{ name: 'insert', items: [ 'unsubscribe'] }
 	];
 
 	// Toolbar groups configuration.
@@ -49,4 +49,5 @@ CKEDITOR.editorConfig = function( config ) {
 //		{ name: 'about' }
 	];
 	config.extraPlugins = 'unsubscribe';
+	//config.extraPlugins = 'smiley';
 };
