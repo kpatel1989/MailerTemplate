@@ -4,9 +4,7 @@ MailerTemplate.Views.MainView = Backbone.View.extend({
 	m_Editor : null,
 	m_PropertyPanel : null,
 	m_DesignPage : null,
-	m_DesignPageHeader : null,
-	m_DesignPageBody : null,
-	m_DesignPageFooter : null,
+	
 	m_saveTemplate : null,
 	m_jsonGenerator : null,
 	m_loadTemplate : null,
@@ -24,14 +22,18 @@ MailerTemplate.Views.MainView = Backbone.View.extend({
 		this.m_saveTemplate = $("#saveTempalate");
 		this.m_loadTemplate = $("#loadTemplate");
 		
-//		this.m_DesignTab = new MailerTemplate.Views.DesignTemplatePage({el : "#DesignPageDiv"}); 
-//		this.m_DesignPageHeader = new MailerTemplate.Views.DesignTemplatePageHeader({el : "#DesignPageDiv"}); 
-//		this.m_DesignPageBody = new MailerTemplate.Views.DesignTemplateBody({el : "#DesignPageDiv"}); 
-//		this.m_DesignPageFooter = new MailerTemplate.Views.DesignTemplateFooter({el : "#DesignPageDiv"}); 
+		this.m_DesignPage = new MailerTemplate.Views.PageDesign({el : "#templateDesign"});
+		this.listenTo(this.m_DesignPage,MailerTemplate.Views.PageDesign.PROPERTY_CHANGE,this.OnPagePropertyChange);
+		
+		this.m_DesignPage.setValues(MailerTemplate.pageStyle);
+		this.m_Editor.setAllPageValues(MailerTemplate.pageStyle);
 	},
 	events : {
 		"click #saveTempalate" : "OnSaveBtnClick",
 		"click #loadTemplate" : "OnLoadTemplateBtnClick"
+	},
+	OnPagePropertyChange: function(data){
+		this.m_Editor.setProperty(data);
 	},
 	openModal: function() {
         var view = new MailerTemplate.Views.ModalView();
@@ -48,7 +50,7 @@ MailerTemplate.Views.MainView = Backbone.View.extend({
 		window.open("TemplatePreview.html","_blank");
 	},
 	OnSaveBtnClick : function(evt){
-		var modelData = this.m_Editor.generatePlainHtml();
+		var modelData = this.m_Editor.getModelData();
 		var jsonData = this.m_jsonGenerator.GenerateJson(modelData);
 		var jsonString = JSON.stringify(jsonData);
 		console.log(jsonString);
@@ -74,6 +76,10 @@ MailerTemplate.Views.MainView = Backbone.View.extend({
 				data = JSON.parse(data);
 			}
 			this.m_Editor.LoadJson(data);
+			if (data.pageStyles){
+				this.m_DesignPage.setValues(data.pageStyles);
+				this.m_Editor.setAllPageValues(data.pageStyles);
+			}
 		}
 		catch(e)
 		{
