@@ -57,6 +57,8 @@ MailerTemplate.Views.MainView = Backbone.View.extend({
 		// save this jsonString
 		this.openModal();
 		window.jsonObject = jsonData;
+		this.m_DesignPage.setValues(MailerTemplate.pageStyle);
+		this.m_Editor.setAllPageValues(MailerTemplate.pageStyle);
 		//window.open("TemplatePreview.html","_blank");
 	},
 	OnLoadTemplateBtnClick : function(){

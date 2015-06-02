@@ -49,5 +49,5 @@ CKEDITOR.editorConfig = function( config ) {
 //		{ name: 'about' }
 	];
 	config.extraPlugins = 'unsubscribe';
-	//config.extraPlugins = 'smiley';
+    config.smiley_path = 'http://framelink.co/app/mailer/js/lib/ckeditor/plugins/smiley/images/';
 };

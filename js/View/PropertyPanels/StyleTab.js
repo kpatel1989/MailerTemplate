@@ -135,7 +135,7 @@ MailerTemplate.Views.StyleTab = Backbone.View.extend({
 	OnImageMarginChanged : function(e){
 		data = {
 			"property" : "imagePadding",
-			"value" : $(e.target).prop("checked") == "checked" ? "10px" : "0px"
+			"value" : $(e.currentTarget).prop("checked") ? "10px" : "0px"
 		}
 		this.trigger(MailerTemplate.Views.StyleTab.STYLE_PROPERTY_CHANGED,data);
 	},
@@ -278,8 +278,8 @@ MailerTemplate.Views.StyleTab = Backbone.View.extend({
 				this.m_lineHeight.val("5");
 				break;
 		}
-		this.m_ImageAlign.val(styleData.ImageAlign);
-		if (styleData.ImageMargin != ""){
+		this.m_ImageAlign.val(styleData.imageAlign);
+		if (styleData.imageMargin != ""){
 			this.m_ImageMargin.attr("checked",true);
 		}
 		this.m_fontColor.val(styleData.fontColor);

@@ -9,3 +9,7 @@ div#template_holder_body {
 * {
     box-sizing: border-box;  
 }
+
+p {
+    margin: 0;
+}
